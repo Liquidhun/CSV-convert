@@ -1,6 +1,7 @@
 import sys, getopt
 import os
 
+
 def main(argv):
 	inputfile = ''
 	outputfile = ''
