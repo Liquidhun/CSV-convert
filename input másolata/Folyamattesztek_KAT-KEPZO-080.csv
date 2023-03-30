@@ -1,0 +1,1387 @@
+﻿ID,Work Item Type,Title,Test Step,Step Action,Step Expected,Area Path,Assigned To,State
+"124171","Test Case","Új tanrend létrehozása - SZK-006",,,,"Pallasz 2.0\Külsős tesztelői csapat","Lengyel Zoltán (Multicontact) <RCINET\LengyelZ>","Design"
+,,,"1","Tesztelési előfeltételek:
+- megfelelő jogosultsággal rendelkező (tanrend szerkesztése) képző szervi ügyintéző.
+- érvényes oktatási helyszín megléte (OKTH-001)
+- képző szervhez rendelt szakoktató megléte
+","
+",,,
+"115088","Shared Steps",,"2","Login (képző szerv)",,,,
+,,,"2.1","A https://tesztekapu.pallasz.hu/ oldal megnyitása (környezetfüggő URL).","Megnyílik a KAV oldala, ahol az alábbi ágazatokból és kategóriákból van lehetőség választani:
+Közúti vizsgáztatás:
+- Jelentkezés kategóriás képzésre
+- Szaktanfolyami okmánycsere
+- Közúti járművezetők utánképzése
+Légügy:
+- Légügyi okmánycsere
+Pályaalkalmassági vizsgálat:
+- PÁV ügyintézés
+Szakoktatók és szakoktató jelöltek:
+- Vizsgajelentő leadása
+- Hospitálás és tanítási órák lejelentése
+Képző szervek (Autósiskolák)
+Vizsgabiztos",,,
+,,,"2.2","Képző szervek (Autósiskolák) bejelentkező oldal megnyitása (Képző szervek (Autósiskolák) gomb megnyomása)","Megnyílik a beleptetes/Kepzoszervek oldal, amelyen az alábbi lehetőségek közül van lehetőség választani:
+- Kategóriás
+- Légügy
+- Szaktanfolyami
+- Utánképzés
+- Vasút",,,
+,,,"2.3","""Kategóriás"" gomb megnyomása","Megnyílik az ""Iskolai bejelentkezés"" oldal, felhasználónév és jelszó megadható.",,,
+,,,"2.4","Bejelentkezés megfelelő jogosultságú felhasználóval a https://tesztekapuauth.pallasz.hu/Kategorias címre (környezetfüggő URL).
+A képző szerv regisztrációját vezető ügyintéző szerepkörű felhasználó végzi. A regisztráció megerősítéséről és a jelszó megváltoztatásáról e-mail üzenetet küld a rendszer. Ezekkel az adatokkal lehet bejelentkezni a rendszerbe képző szervként.","Felhasználónév és jelszó megadását követően megjelenik az oldalon a kétlépcsős hitelesítés.",,,
+,,,"2.5","Hitelesítő kód megadása és belépés a rendszerbe","Megnyílik a https://tesztkvar.pallasz.hu/iskola (Iskola) oldal, megjelennek a Rendszerüzenetek.
+Bejelentkezést követően a szerepkörnek (képző szerv) megfelelő menüpontok és szolgáltatások jelennek meg, és érhetők el.",,,
+,,,"3","A bejelentkezést követően ki kell választani a Tanrend/Új tanrend menüpontját.
+","A rendszer betölti az új tanrend űrlapot, amelyen az alábbi mezők tölthetők ki. 
+Azonosító*
+Tanfolyam típus*
+Tantárgy típus*
+Oktatás helyszíne*
+Tervezett létszám
+Vizsga tervezett dátuma
+
+Az azonosító mező kitölthető, kattintsára (fókusz) beviteli maszkot jelenít meg: ##/#### formátumban. 
+A tanfolyam típus mezőt nyitva. Az rendszerben rögzített alap paramétereknek megfelelő képzési típusok jelennek meg. 
+
+A tanfolyam típus esetében a lenyíló listában a vezető ügyintéző által a képzőhöz rögzített képezhető képzések listája jelenik meg. 
+A tantárgy típusnál a vezető ügyintéző által a képzőhöz rögzített engedélyben meghatározott tantárgy típusok választhatók ki, figyelembe véve az adott kategóriájára jellemző részszabályokat. 
+
+Az oktatás helyszíne választó listában azok az értékek jelennek meg, amelyet az képző intézményhez rendelt ügyintéző, a beállítások/helyszínek menüpont alatt felrögzített.
+
+A tervezett létszám mező kitölthető, a mező csak számértéket fogad el 1 és 255 közötti értékkel. A mező üresen is hagyható. 
+
+A vizsga tervezett dátuma mező naptár funkciója működik, a dátumok tallózhatók és kiválaszthatók. A mezőbe dátumot a megfelelő formátumban be lehet gépelni. 
+
+Az ablak alsó részén a tantárgyak blokk jelenik meg. A tantárgyak blokk alapértelmezetten üres. 
+A tanulók fül (tab) nem aktív, nem válaszható ki. 
+",,,
+,,,"4","Új tantárgy hozzáadása gombra kattintással a megfelelő tantárgy kiválasztása és rögzítése.
+","Megjelenik a tantárgyak rögzítési űrlap. Kötelező mezőként a tantárgy az oktató neve, az időpontok, illetve a helyszín információt kell rögzíteni. 
+
+A tantárgy lenyíló listában a tanfolyam típusnak megfelelő, az alapkészletben rögzített tantárgy típusok kerülnek listázásra. Ezekből csak egy választható ki. 
+
+A tantárgy kiválasztását követően a szakoktató neve lista feltöltődik azokkal a szakoktatókkal, akik a kiválasztott kategóriás képzéshez rendelt szakoktatói engedéllyel rendelkeznek, és a képző szervi ügyintéző a Beállítások/Szakoktatók menüpont alatt az adott képzőhöz rendelt. 
+
+Az időpont beállításánál a nap mező naptár funkciója kattintható, a naptár megjelenik, az adott dátum kiválasztható, illetve a megfelelő formátumban a szövegesen bevihető. A kezdete vége mezők esetében 5 perces bontásban kiválasztható az időpont, illetve a megfelelő formátumban a szövegesen bevihető. Az óraszám mezőbe szám formátum rögzíthető az adott napi óraszám, egyéb karakter nem gépelhető a mezőbe. Az oktatás helyszíne lenyíló listában a képződött rendelt. Tantárgy típusnak megfelelő oktatási helyszínek jelennek meg. 
+
+",,,
+,,,"5","Pótfoglalkozás hozzáadása gombra kattintással az adott tantárgyhoz kapcsolódó pótfoglalkozás adatai megadhatók.
+","A pótfoglalkozások időpont és helszínrögzítő űrlap betöltődik az adott tantárgy blokkjába. Az időpont beállításánál a nap mező naptár funkciója kattintható, a naptár megjelenik, az adott dátum kiválasztható, illetve a megfelelő formátumban a szövegesen bevihető. A kezdete vége mezők esetében 5 perces bontásban kiválasztható az időpont, illetve a megfelelő formátumban a szövegesen bevihető. Az óraszám mezőbe szám formátum rögzíthető az adott napi óraszám, egyéb karakter nem gépelhető a mezőbe. Az oktatás helyszíne lenyíló listában a képződött rendelt. Tantárgy típusnak megfelelő oktatási helyszínek jelennek meg. 
+
+",,,
+,,,"6","Pótfoglalkozás Időpontjának törlése az adott tantárgy vonatkozásában, a pótfoglalkozások időpont és helyszín rögzítésére szolgáló űrlap jobb oldalán található X (piros) gombra kattintva.
+","Kattintásra a pótfoglalkozásokhoz tartozó időpont és helyszín rögzítési űrlap eltűnik. 
+",,,
+,,,"7","Új tantárgy hozzáadása gombra kattintva egy másik tantárgy rögzítése. (megfelelő adatokkal történő kitöltése)
+","Az előzőleg rögzített tantárgy adatok, időpontok és helyszínek kitöltötten megmaradnak és megjelenik egy új tantárgy rögzítése űrlap blokk tantárgy nevével, oktató nevével, időpontokkal, hasonlóan az előző lépésekben bemutatott formában. A követelmények megegyeznek az előző lépésben rögzítettekkel.  
+",,,
+,,,"8","A kitöltött időpont és helyszínadatok elmentése a Mentés gomb megnyomásával. 
+","A rendszer a Tanrend módosítása oldalra navigál (Iskola/Tanfolyam/Edit/300026#!Tanrend), ahol az előző lépésekben megadott adatokat tartalmazó tanrend kerül megjelenítésre, a tantárgyakkal és azok részadataival. 
+Amennyiben a rögzített időpontok a meghatározott időn belül kezdődnek, akkor a rendszer piros háttérszínnel jelöli a Nap, Kezdete, Vége és Óraszám mezőket, valamint megjeleníti az alábbi üzenetet:  Az eltérő háttérrel jelzett órák módosításának lejárt a határideje. Csak indokolt esetben módosítsa!
+
+Módosítható mezők  a szerkesztési nézetben: 
+Tantárgy, Szakoktató neve, Időpontok minden mezője.
+
+Aktív lesz a Tanulók fül (tab).
+",,,
+,,,"9","Tanulók fül (tab) kiválasztása
+","A tanulók fül (tab) aktív lesz, megjelenik a tanulók listázását tartalmazó felület (jelenleg üresnek kell lennie). Az oldalon megjelenik a A tanulók névsorát legkésőbb ÉÉÉÉ.HH.NN.-ig rögzíteni kell! üzenet, amely a tanfolyam első képzési napjának megfelelő dátumot tartalmazza. Az oldalon megjelenik a Névsor nyomtatása, a Névsor véglegesítése, és a Tanuló hozzáadása gomb. 
+",,,
+,,,"10","Tanuló hozzáadása gombra kattintás (a tesztlépés előfeltétele, hogy legyen a képzőhöz rendelet tanulói jelentkezés az adott kategóriás képzésre)
+","A rendszer betölti a Tanuló hozzáadása modal ablakot. Az ablakban megjelenik az Alapadatok blokk, amely a listázható tanulók adatainak szűrésére keresésére szolgál. Az űrlapon az alábbi adatok adhatók meg: 
+-Teljes név
+ -Születési név
+-Anyja neve
+-Születési hely
+-Születési idő
+ 
+A szűrőfeltételekben a 4T adatok közül legalább egy adat megadásával vagy több adat megadásával a szűrés gombra kattintva megjelenik a keresett tanuló. Amennyiben a szűrőfeltételek közül semmit nem adunk meg, csak a szűrés gombra kattintunk, akkor az összes, a kategóriához rögzített, a képzőnél szereplő tanulói jelentkezés kilistázódik.
+
+",,,
+,,,"11","Tanuló hozzárendelése az adott képzéshez, a listában megjelenített adat jobb oldalán található Hozzárendelés (plusz jel) gombra kattintva.
+","A gomb megnyomására a rendszer megjeleníti A művelet, sikeresen végrehajtott üzenetet. Továbbra is nyitva maradt a tanulók hozzáadása, modal ablak és a listából eltűnik a kiválasztott tanuló. A szűrési feltételek ismételt megadásával vagy a szűrési feltétel nélküli keresés esetén a tanulónak nem szabad megjelennie a listában. A modal ablak bezárását követően visszatérünk a Tanrend módosítása oldalra, ahol továbbra is a Tanulók fül van kiválasztva. A tanulói listában megjelenik az előzőleg kiválasztott tanuló rekordja. 
+A tanuló azonosító utolsó blokkja szerkesztésre aktív állapotban van, míg az első három blokkot a rendszer szerkesztési lehetőség nélkül megjeleníti. Az azonosító az alábbiak szerint épül fel: képző azonosítója / képzés indulásának éve (YY)/képzés azonosítója/futósorszámos tanulói azonosítója. A formátuma: ####/##/####/####.
+",,,
+,,,"12","Tanulói azonosító mentése gombra kattintás. 
+","A rendszer a jobb felső sarokban megjeleníti A művelet sikeresen végrehajtódott üzenetet. 
+",,,
+,,,"13","A tanulói egyedi azonosítóit el kell menteni a Tanulói azonosító mentése gombra kattintva.
+","Amennyiben a rendszerben már van a megadott azonosítóval tanuló rögzítve, akkor az Az alábbi tanuló(k) azonosítója már létezik üzenet jelenik meg, fel sorolva az érintett azonosítókat. Amennyiben azonos azonosítókat adunk meg legalább két hallgatóhoz, akkor azonos üzenetnek kell megjelennie. Egyedi azonosítók megadása esetén a rendszer A művelet sikeresen végrehajtódott üzenetet jeleníti meg az ablak jobb felső sarkában. 
+",,,
+,,,"14","A tanulói azonosítók mentését követően a Névsor véglegesítése gombra kattintva lezárjuk a névsort.
+","A rendszer egy megerősítő kérdést jelenít meg (Biztosan végrehajtja a műveletet?), amelyen a Nem gombra kattintva a megerősítő kérdést tartalmazó ablak bezáródik, és a tanulói névsor változatlan marad. Az Igen gombra kattintva a rendszer véglegesíti a névsort és az alábbi üzenetet jeleníti meg a névsor felett sárga háttérrel: A névsort ÉÉÉÉ.HH.NN. HH:MM-kor Képzőközpont neve véglegesítette.
+Véglegesítés hatására:
+1. A hallgatói azonosító nem módosítható. Aktív lesz a Névsor véglegesítésének visszavonása gomb.
+2. Eltűnik a törlés gomb a tanulói adatok jobb oldaláról (tehát nem törölhető a tanuló a névsorból).
+3. Eltűnik a tanuló hozzáadása gomb, így a névsor nem bővíthető a továbbiakban. 
+4. Eltűnik a Tanuló azonosító mentése gomb, amennyiben ez nem volt korábban megnyomva (nem előfeltétele a véglegesítésnek), akkor a véglegesítés a mentést megelőzően kötelezően lefut. 
+ 
+",,,
+"124172","Test Case","Új tanulói adatlap hozzáadása - SZK-001",,,,"Pallasz 2.0\Külsős tesztelői csapat","Endrész Gábor (Multicontact) <RCINET\endreszg>","Design"
+"115358","Shared Steps",,"1","Login (képző szerv) - Új tanulói adatlap",,,,
+,,,"1.1","A https://tesztekapu.pallasz.hu/ oldal megnyitása (környezetfüggő URL).
+","Megnyílik a KAV oldala, ahol az alábbi ágazatokból és kategóriákból van lehetőség választani:
+Közúti vizsgáztatás:
+- Jelentkezés kategóriás képzésre
+- Szaktanfolyami okmánycsere
+- Közúti járművezetők utánképzése
+Légügy:
+- Légügyi okmánycsere
+Pályaalkalmassági vizsgálat:
+- PÁV ügyintézés
+Szakoktatók és szakoktató jelöltek:
+- Vizsgajelentő leadása
+- Hospitálás és tanítási órák lejelentése
+Képző szervek (Autósiskolák)
+Vizsgabiztos
+",,,
+,,,"1.2","Képző szervek (Autósiskolák) bejelentkező oldal megnyitása (Képző szervek (Autósiskolák) gomb megnyomása)
+","Megnyílik a beleptetes/Kepzoszervek oldal, amelyen az alábbi lehetőségek közül van lehetőség választani:
+- Kategóriás
+- Légügy
+- Szaktanfolyami
+- Utánképzés
+- Vasút
+",,,
+,,,"1.3","""Kategóriás"" gomb megnyomása
+","Megnyílik az ""Iskolai bejelentkezés"" oldal, felhasználónév és jelszó megadható.
+",,,
+,,,"1.4","Bejelentkezés megfelelő jogosultságú felhasználóval a https://tesztekapuauth.pallasz.hu/Kategorias címre (környezetfüggő URL).
+A képző szerv regisztrációját vezető ügyintéző szerepkörű felhasználó végzi. A regisztráció megerősítéséről és a jelszó megváltoztatásáról e-mail üzenetet küld a rendszer. Ezekkel az adatokkal lehet bejelentkezni a rendszerbe képző szervként.
+","Felhasználónév és jelszó megadását követően megjelenik az oldalon a kétlépcsős hitelesítés.
+",,,
+,,,"1.5","Hitelesítő kód megadása és belépés a rendszerbe
+","Megnyílik a https://tesztkvar.pallasz.hu/iskola (Iskola) oldal, megjelennek a Rendszerüzenetek.
+Bejelentkezést követően a szerepkörnek (képző szerv) megfelelő menüpontok és szolgáltatások jelennek meg, és érhetők el.
+",,,
+,,,"2","Tanuló / Új tanulói adatlap menüpont kiválasztása a főmenüből.","Megnyílik az Iskola/UjKategoriasKepesitesJelentkezes/Create?mod=Uj oldal (Új tanulói adatlap).
+Az oldalon megjelenik az új tanulói adatlap rögzítésének folyamatlépései, az éppen aktuális lépéssel kiemelve:
+- Képzés
+- Bekérendő okmányok
+- Alapadatok
+- Nyilatkozatok
+- Összefoglaló
+
+A folyamatlépések alatt két üzenet jelenik meg az alábbi szövegekkel:
+- ""Új tanulói adatlap, Kategória, Képzés""
+- ""Kategória illetve képzés módosítása esetén a személyes adatok kivételével minden egyéb érték törlésre kerül!""
+
+Az üzenetek alatt megjelenik a Képzési adatok rögzítésére szolgáló űrlap.
+
+Az oldal alján megjelenik a ""Tovább"" gomb amely aktív és kattintható.
+ 
+
+",,,
+,,,"3","Képzési adatok megadása.","A megnyitott oldalon megjelenik a Képzési adatok blokk amelyben megadhatók az alábbi adatok:
+- Születési idő* (dátumválasztó, vagy manuális bevitel)
+- Kategória*
+- Képzés* 
+
+A születési idő megadásánál az űrlap kategóriánként és képzésenként validálja a megadott születési dátumot.
+ 
+A Kategória beviteli mező legördülő listának értékei között csak azok a kategóriák jelenhetnek meg amelyek az adott képző szervhez rögzítésre kerültek. 
+ 
+A Képzés beviteli mező egészen addig inaktív ameddig a kategória nincs kiválasztva. Ezt követően a legördülő lista értékei a kiválasztott kategória alapján kerülnek feltöltésre.
+
+Az űrlap felett találhatót információs blokkban a Kategória és Képzés értékei dinamikusan változnak az űrlapon megadott értékeknek megfelelően.
+ 
+A kötelező mezők kiöltését a rendszer kikényszeríti. A mezők kitölthetők. hiány, vagy formai eltérés esetén egyértelmű hibát jelez az oldal.
+",,,
+,,,"4","A hiánytalanul kitöltött adatlap mentése (minimum a kötelező mezők ki vannak töltve). Az oldal alján a ""Tovább"" gomb megnyomása.
+","A kattintást követően hiba nélkül tovább léptet a rendszer a folyamat következő lépésére. Az oldalon a fenti folyamat jelző linkjeinek a segítségével visszaléphetünk a korábbi lépésre, ahol a megjelennek a korábban megadott adatok megfelelő helyen és minőségben, a mezők tartalma szerkeszthető.",,,
+,,,"5","Bekérendő okmányok rögzítése.","A megnyitott oldalon megjelennek a Bekérendő okmányok rögzítéséhez szolgáló alábbi űrlapok. 
+- Személyazonosító okmány
+- Papír alapú egészségügyi alkalmassági igazolással rendelkezik?
+- Vizsgaigazolással rendelkezik?
+- Járművezetői igazolvánnyal rendelkezik?
+- Vezetői engedély
+
+A Személy azonosító okmány rögzítésére szolgáló űralpon kívül a többi űrlap mezői csak akkor jelennek meg ha a kapcsolódó ""Igen""/""Nem"" rádiógombok közül az ""Igen"" érték aktív.",,,
+,,,"6","Személyazonosító okmány rögzítése.","A megnyitott oldalon megjelenik a Személyazonosító okmány blokk, amelyben megadhatók az alábbi adatok:
+- Típusa*
+- Száma*
+
+A Típusa mező legördülő lista értékei a következők:
+- Magyar személyi igazolvány
+- Magyar vezetői engedély
+- Magyar útlevél
+- Külföldi személyi igazolvány
+- Külföldi vezetői engedély
+- Külföldi útlevél
+
+A kötelező mezők kiöltését a rendszer kikényszeríti. A mezők kitölthetők. hiány, vagy formai eltérés esetén egyértelmű hibát jelez az oldal.
+",,,
+,,,"7","Papír alapú egészségügyi alkalmassági igazolással rendelkezik? blokkban az ""Igen"" rádiógombra kattintunk és megadjuk a szükséges adatokat.
+","A megnyitott oldalon megjelenik a Papír alapú egészségügyi alkalmassági igazolással rendelkezik? blokk, amelyben megadhatók az alábbi adatok:
+- Igazolás azonosító
+- Érvényesség vége* (dátumválasztó, vagy manuális bevitel)
+- EÜ alkalmassági csoport*
+- EÜ korlátozás
+- Csatolmány feltöltése*
+
+Az EÜ alkalmassági csoport mező legördülő lista értékei a következők:
+- I. csoport (101)
+- II. csoport (102)
+
+A kötelező mezők kiöltését a rendszer kikényszeríti. A mezők kitölthetők. hiány, vagy formai eltérés esetén egyértelmű hibát jelez az oldal.
+",,,
+,,,"8","Papír alapú egészségügyi alkalmassági igazolással rendelkezik? blokkban EÜ korlátozások felvétele, az EÜ korlátozás mező jobb szélén található ""+"" ikonra kattinva.
+","A kattintást követően megnyílik a Papír alapú egészségügyi alkalmassági igazoláshoz tartozó korlátozások ablak, amelyben megadhatók az alábbi adatok:
+- Felvett korlátozások
+- Új korlátozás*
+- Betűjel (csak akkor jelenik meg ez a mező, ha a kiválasztott korlátozás esetén releváns).
+
+Az Új korlátozás legördülő listában a szükséges korlátozás kiválasztását (illetve amennyiben releváns a Betűjel mező kitöltését) követően a mező jobb szélén található ""+"" ikonra kattintva az adott korlátozás megjelenik a kódjával a Felvett korlátozások mezőben.
+
+A Felvett korlátozások mezőben az adott korlátozás melett található ""X"" ikon megnyomásával az adott korlátozás eltávolítható a listából.
+
+Az ablak bezárását követően a felvett korlátozások megjelennek az EÜ korlátozás mező értékei között, az adott korlátozás melett található ""X"" ikon megnyomásával az adott korlátozás eltávolítható a listából.",,,
+,,,"9","Papír alapú egészségügyi alkalmassági igazolással rendelkezik? blokkban csatolmány feltöltése helyes formátumban, és méretben (pdf, maximum 5 MB-os méret) a ""Csatolmány feltöltése"" gombra kattintva.
+","A gombra kattintva megjelenik a böngésző fájl feltöltési ablaka. Az ablakban kiválasztásra kerül egy pdf kiterjesztésű fájl amely nem haladja meg az 5 MB-ot. A Megnyitás gombra kattintva a fájl feltöltésre kerül és az ikonja a nevével együtt megjelenik az űrlap alján. A fájl sorának jobb szélén található ""X"" ikon megnyomásával az adott csatolmány eltávolítható a listából.
+",,,
+,,,"10","Vizsgaigazolással rendelkezik? blokkban az ""Igen"" rádiógombra kattintunk és megadjuk a szükséges adatokat.
+","A megnyitott oldalon megjelenik a Vizsgaigazolással rendelkezik? blokk, amelyben megadhatók az alábbi adatok:
+- Száma*
+- Vizsga dátuma* (dátumválasztó, vagy manuális bevitel)
+- Vizsgaigazolás kategóriája*
+
+A Vizsgaigazolás kategóriája mező legördülő lista értékei a paraméterekből tölti be a rendszer.
+
+A kötelező mezők kiöltését a rendszer kikényszeríti. A mezők kitölthetők. hiány, vagy formai eltérés esetén egyértelmű hibát jelez az oldal.
+",,,
+,,,"11","Járművezetői igazolvánnyal rendelkezik? blokkban az ""Igen"" rádiógombra kattintunk és megadjuk a szükséges adatokat.
+","A megnyitott oldalon megjelenik a Vizsgaigazolással rendelkezik? blokk, amelyben megadhatók az alábbi adatok:
+- Száma*
+- A*
+- K*
+- K186*
+- M*
+- T*
+
+Az A, K, K186, M, T mezőkhöz tartozó rádiógombok értékei alapértelmezetten a ""Nem"" értékre vannak állítva.
+ 
+A kötelező mezők kiöltését a rendszer kikényszeríti. A mezők kitölthetők. hiány, vagy formai eltérés esetén egyértelmű hibát jelez az oldal.
+",,,
+,,,"12","Vezetői engedély blokkban az ""Igen"" rádiógombra kattintunk és megadjuk a szükséges adatokat.","A megnyitott oldalon megjelenik a Vezetői engedély blokk, amelyben megadhatók az alábbi adatok:
+- Száma*
+- Kibocsátó ország*
+- EÜ alkalmassági csoport*
+- EÜ korlátozás
+- 9. Kategória*
+- 10. Vizsga dátuma* (dátumválasztó, vagy manuális bevitel)
+- 11. Érvényesség vége* (dátumválasztó, vagy manuális bevitel)
+- 12. Korlátozás*
+
+A kategóriához tartozó információk megadására szolgáló mezők mellett megjelenik a ""Törlés"" ikon.
+A blokk alján megjelnik a ""Kategória hozzádadása"" gomb.
+
+Az EÜ alkalmassági csoport mező legördülő lista értékei a következők:
+- Nincs az igazolványon
+- I. csoport (101)
+- II. csoport (102)
+ 
+A kötelező mezők kiöltését a rendszer kikényszeríti. A mezők kitölthetők. hiány, vagy formai eltérés esetén egyértelmű hibát jelez az oldal.
+",,,
+,,,"13","Vezetői engedély blokkban EÜ korlátozások felvétele, az EÜ korlátozás mező jobb szélén található ""+"" ikonra kattinva.
+","A kattintást követően megnyílik a Vezetői engedélyhez tartozó korlátozások ablak, amelyben megadhatók az alábbi adatok:
+- Felvett korlátozások
+- Új korlátozás*
+- Betűjel (csak akkor jelenik meg ez a mező, ha a kiválasztott korlátozás esetén releváns).
+
+Az Új korlátozás legördülő listában a szükséges korlátozás kiválasztását (illetve amennyiben releváns a Betűjel mező kitöltését) követően a mező jobb szélén található ""+"" ikonra kattintva az adott korlátozás megjelenik a kódjával a Felvett korlátozások mezőben.
+
+A Felvett korlátozások mezőben az adott korlátozás melett található ""X"" ikon megnyomásával az adott korlátozás eltávolítható a listából.
+
+Az ablak bezárását követően a felvett korlátozások megjelennek az EÜ korlátozás mező értékei között, az adott korlátozás melett található ""X"" ikon megnyomásával az adott korlátozás eltávolítható a listából.
+",,,
+,,,"14","Vezetői engedély blokkban Korlátozás felvétele, a 12. Korlátozás mező jobb szélén található ""+"" ikonra kattinva.
+","A kattintást követően megnyílik az adott kategóriához tartozó korlátozások hozzáadása ablak, amelyben megadhatók az alábbi adatok:
+- Felvett korlátozások
+- Új korlátozás*
+- Betűjel (csak akkor jelenik meg ez a mező, ha a kiválasztott korlátozás esetén releváns).
+
+Az Új korlátozás legördülő listában a szükséges korlátozás kiválasztását (illetve amennyiben releváns a Betűjel mező kitöltését) követően a mező jobb szélén található ""+"" ikonra kattintva az adott korlátozás megjelenik a kódjával a Felvett korlátozások mezőben.
+
+A Felvett korlátozások mezőben az adott korlátozás melett található ""X"" ikon megnyomásával az adott korlátozás eltávolítható a listából.
+
+Az ablak bezárását követően a felvett korlátozások megjelennek az 12. Korlátozás mező értékei között, az adott korlátozás melett található ""X"" ikon megnyomásával az adott korlátozás eltávolítható a listából.
+",,,
+,,,"15","Új kategória hozzáadása a ""Kategória hozzáadása"" gombra kattintva.","A gombra kattintva megjelennek a további kategória hozzáadására szolgáló következő mezők:
+- 9. Kategória*
+- 10. Vizsga dátuma* (dátumválasztó, vagy manuális bevitel)
+- 11. Érvényesség vége* (dátumválasztó, vagy manuális bevitel)
+- 12. Korlátozás*
+
+Továbbá megjelenik a mezők mellett a ""Törlés"" ikon.
+
+A 9. Kategória legördülő lista elemei között a korábban hozzáadott kategóriák már nem jelennek meg.
+ 
+A mezők feltöltésével kapcsolatos funkciók megegyeznek a korábbiakban kategória felvétel során tapasztaltakkal.
+ ",,,
+,,,"16","Kategória törlése a ""Törlés"" ikonra kattintva.","A kattintást követően eltűnnek az adott kategóriához tartozó mezők.
+Amennyiben minden kategória törlésre kerül a rendszer az alábbi figyelmeztető üzenetet jeleníti meg:
+""Legalább egy kategóriát kötelező megadni!""",,,
+,,,"17","A hiánytalanul kitöltött adatlap mentése (minimum a kötelező mezők ki vannak töltve). Az oldal alján a ""Tovább"" gomb megnyomása.
+","A kattintást követően hiba nélkül tovább léptet a rendszer a folyamat következő lépésére. Az oldalon a fenti folyamat jelző linkjeinek a segítségével visszaléphetünk a korábbi lépésre, ahol a megjelennek a korábban megadott adatok megfelelő helyen és minőségben, a mezők tartalma szerkeszthető.
+",,,
+,,,"18","Alapadatok rögzítése.
+","A megnyitott oldalon megjelennek az Alapadatok rögzítéséhez szolgáló alábbi űrlapok. 
+- Név
+- Születési név
+- Anyja neve
+- Születési adatok
+- Elérhetőség
+- Állandó lakcím / tartózkodási hely
+- Értesítési cím
+",,,
+,,,"19","Név adatok rögzítése.","A megnyitott oldalon megjelenik a Név blokk, amelyben megadhatók az alábbi adatok: 
+- Előtag
+- Családi név*
+- Utónév*
+- Második utónév
+A kötelező mezők kiöltését a rendszer kikényszeríti. A mezők kitölthetők. hiány, vagy formai eltérés esetén egyértelmű hibát jelez az oldal.
+",,,
+,,,"20","Születési név adatok rögzítése.","A megnyitott oldalon megjelenik a Születési név blokk, amelyben megadhatók az alábbi adatok: 
+- Előtag
+- Családi név*
+- Utónév*
+- Második utónév
+A kötelező mezők kiöltését a rendszer kikényszeríti. A mezők kitölthetők. hiány, vagy formai eltérés esetén egyértelmű hibát jelez az oldal.
+",,,
+,,,"21","Név adatok másolása a Születési név űrlapra a ""Név másolása"" gombra kattintva.","A kattintást követően a Születési név mezői feltöltésre kerülnek a Név blokkban megadott értékekkel a megfelelő helyen és minőségben. Az adatok szerkeszthetőek",,,
+,,,"22","Anyja neve adatok rögzítése.","A megnyitott oldalon megjelenik az Anyja neve blokk, amelyben megadhatók az alábbi adatok: 
+- Előtag
+- Családi név*
+- Utónév*
+- Második utónév
+A kötelező mezők kiöltését a rendszer kikényszeríti. A mezők kitölthetők. hiány, vagy formai eltérés esetén egyértelmű hibát jelez az oldal.
+",,,
+,,,"23","Születési adatok rögzítése.","A megnyitott oldalon megjelenik a Születési adatok blokk, amelyben megadhatók az alábbi adatok: 
+- Állampolgárság*
+- Születési ország* 
+- Születési hely*
+- Születési idő
+
+Az Állampolgárság mező értéke alapértelmezetten a magyar értéket veszi fel.
+ 
+A Születési idő mező értéke nem szerkeszthető, a Képzési adatok megadása során rögzített születési idő jelenik meg benne.
+A kötelező mezők kiöltését a rendszer kikényszeríti. A mezők kitölthetők. hiány, vagy formai eltérés esetén egyértelmű hibát jelez az oldal.
+",,,
+,,,"24","Elérhetőségi adatok rögzítése.","A megnyitott oldalon megjelenik az Elérhetőség blokk, amelyben megadhatók az alábbi adatok:
+- Telefonszám
+- E-mail cím
+- E-mail cím megerősítése
+
+A mezők felett az alábbi üzenet jelenik meg:
+""Amennyiben megad elérhetőségi adatokat, úgy azokon keresztül a KAV képzéssel és vizsgáztatással kapcsolatos tájékoztatást küldhet a tanuló részére.""
+ 
+A mezők kiöltése opcionális. A mezők kitölthetők. hiány, vagy formai eltérés esetén egyértelmű hibát jelez az oldal.
+",,,
+,,,"25","Állandó lakcím / tartózkodási hely adatok rögzítése.","A megnyitott oldalon megjelenik az Állandó lakcím / tartózkodási hely blokk, amelyben megadhatók az alábbi adatok: 
+-Ország*
+-Irányítószám*
+-Település*
+-Közterület / HRSZ*
+-Közterület jellege*
+-Házszám
+-Épület
+-Lépcsőház
+-Emelet
+-Ajtó
+
+Az Ország mező értéke alapértelmezetten a Magyarország értéket veszi fel.
+ 
+A kötelező mezők kiöltését a rendszer kikényszeríti. A mezők kitölthetők. hiány, vagy formai eltérés esetén egyértelmű hibát jelez az oldal.
+",,,
+,,,"26","Értesítési cím Megegyezik rádiógomb ki van pipálva.","Amennyiben a rádiógomb ki van pipálva az Értesítési cím adatok rögzítéséhez szükséges mezők nem jelennek meg.",,,
+,,,"27","Értesítési cím Megegyezik rádiógomb nincs kipipálva, Értesítési cím adatok rögzítése.
+","Amennyiben a rádiógomb nincs kipipálva megjelenik az Értesítési cím blokk, amelyben megadhatók az alábbi adatok: 
+-Ország*
+-Irányítószám*
+-Település*
+-Közterület / HRSZ*
+-Közterület jellege*
+-Házszám
+-Épület
+-Lépcsőház
+-Emelet
+-Ajtó
+
+Az Ország mező értéke alapértelmezetten a Magyarország értéket veszi fel.
+ 
+A kötelező mezők kiöltését a rendszer kikényszeríti. A mezők kitölthetők. hiány, vagy formai eltérés esetén egyértelmű hibát jelez az oldal.",,,
+,,,"28","A hiánytalanul kitöltött adatlap mentése (minimum a kötelező mezők ki vannak töltve). Az oldal alján a ""Tovább"" gomb megnyomása.
+","A kattintást követően hiba nélkül tovább léptet a rendszer a folyamat következő lépésére. Az oldalon a fenti folyamat jelző linkjeinek a segítségével visszaléphetünk a korábbi lépésre, ahol a megjelennek a korábban megadott adatok megfelelő helyen és minőségben, a mezők tartalma szerkeszthető.
+",,,
+,,,"29","Nyilatkozat rögzítése.","A megnyitott oldalon megjelennek a Tanulói nyilatkozat rögzítéséhez szolgáló űrlap. 
+A megjelnő kérdések mellett megjelenő rádiógombok értékeitől függően további adatok rögzítésére lehet szükség. Azon kérdések esetén ahol ""Igen"" érték esetén további adatok megadása szükséges a következő tesztek tartalmazzák.
+ 
+A rádiógombok értéke alapértelmezetten a ""Nem"" értéket veszik fel.",,,
+,,,"30","A hiánytalanul kitöltött adatlap mentése (minimum a kötelező mezők ki vannak töltve). Az oldal alján a ""Tovább"" gomb megnyomása.
+","A kattintást követően hiba nélkül tovább léptet a rendszer a folyamat következő lépésére. Az oldalon a fenti folyamat jelző linkjeinek a segítségével visszaléphetünk a korábbi lépésre, ahol a megjelennek a korábban megadott adatok megfelelő helyen és minőségben, a mezők tartalma szerkeszthető.
+",,,
+,,,"31","Összefoglaló megtekintése.","A megnyitott adatlapon megjelenik a tanulói Jelentkezési lap nyomtatási képe a korábbi lépésekben rögzített adatokkal feltöltve a megfelelő helyen és minőségben.
+
+Van lehetőség a jelentkezési lap jelen állapotának letöltésére és nyomtatására.
+
+Az oldal alján megjelenik ""Mentés"" gomb ami aktív és kattintható.",,,
+,,,"32","Jelentkezési lap mentése a ""Mentés"" gombra kattintva.","A gombra kattintva amennyiben a megelőző lépésekben hiányosan vagy hibásan kerültek megadásra adatok a rendszer hibaüzenettel figyelmeztet és lehetőség van ezek pótlására a megfelelő lépés linkjére kattintva a folyamat jelző sávban.
+
+Amennyiben hiánytalanul és megfelelő minőségben kerültek megadásra az adatok, ezek mentésre kerülnek és a rendszer tovább navigál a következő oldalra: Iskola/UjKategoriasKepesitesJelentkezes/VezEngNyilatkozat/400023.
+
+Az oldal alján megjelennek a ""Kihagyás"" és ""Nyilatkozat kitöltése"" gombok.",,,
+,,,"33","Vezetői engedély nyilatkozat kitöltése a ""Nyilatkozat kitöltése"" gombra kattintva.","A gombra kattintva megjelenik az Automatikus vezetői engedély kiállítási nyilatkozat kitöltéséhez szükséges űrlap.
+A megjelnő kérdések mellett megjelenő rádiógombok, illetve legördülő listák értékeitől függően további adatok rögzítésére lehet szükség. Azon kérdések esetén ahol ""Igen"" érték esetén, vagy a legördülő lista értéke alapján további adatok megadása szükséges a következő tesztek tartalmazzák.
+ 
+A rádiógombok értéke alapértelmezetten az első kérdés kivételével a ""Nem"" értéket veszik fel.
+",,,
+,,,"34","5. Okmányátvétel helyének kiválasztása kérdés esetén a legördülő listából az ""Átvétel kormányablakban/okmányirodában"" értéket választjuk.
+","Az érték kiválasztását követően a kérdés alatt az alábbi mező jelenik meg:
+- Az átvétel helyének kiválasztása legördülő listából*
+ 
+A legördülő lista értékeit képező hivatalokat, kormányablakokat, okmányirodákat a rendszer a paraméterekből tölti fel.
+
+A kötelező mezők kiöltését a rendszer kikényszeríti. A mezők kitölthetők. hiány, vagy formai eltérés esetén egyértelmű hibát jelez az oldal.
+",,,
+,,,"35","5. Okmányátvétel helyének kiválasztása kérdés esetén a legördülő listából az ""Postázás egyéb belföldi postacímre"" értéket választjuk.
+","Az érték kiválasztását követően a kérdés alatt az alábbi mezők jelennek meg:
+-Ország*
+-Irányítószám*
+-Település*
+-Közterület / HRSZ*
+-Közterület jellege*
+-Házszám
+-Épület
+-Lépcsőház
+-Emelet
+-Ajtó
+
+Az Ország mező értéke alapértelmezetten a Magyarország értéket veszi fel.
+A kötelező mezők kiöltését a rendszer kikényszeríti. A mezők kitölthetők. hiány, vagy formai eltérés esetén egyértelmű hibát jelez az oldal.
+",,,
+,,,"36","6. Értesítési mód és elérhetőségi adat megadása kérdés esetén az ""Igen"" értéket választjuk.
+","A rádiógomb ""Igen"" értékének kiválasztását követően a kérdés alatt az alábbi mezők kitölthetővé válnak:
+- E-mail cím
+- SMS-fogadásra képes telefonszám.
+A kötelező mezők kiöltését a rendszer kikényszeríti. A mezők kitölthetők. hiány, vagy formai eltérés esetén egyértelmű hibát jelez az oldal.
+",,,
+,,,"37","Hozzájárulok, hogy a Közlekedési Alkalmassági és Vizsgaközpont Nonprofit Kft. (KAV) a nyilatkozattal kapcsolatban tájékoztatást küldjön részemre. kérdés esetén az ""Igen"" értéket választjuk.
+","A rádiógomb ""Igen"" értékének kiválasztását követően a kérdés alatt az alábbi mezők kitölthetővé válnak:
+- E-mail cím
+A kötelező mezők kiöltését a rendszer kikényszeríti. A mezők kitölthetők. hiány, vagy formai eltérés esetén egyértelmű hibát jelez az oldal.
+",,,
+,,,"38","Nyilatkozat mentése az első négy kérdés esetén megadott ""Nem"" értékkel a ""Mentés"" gombra kattintva.","A kattintást követően egy figyelmeztető ablak jelenik meg a következő üzenettel:
+""Csak azon nyilatkozatok alapján indul a vezetői engedély automatikus hivatalbóli kiállítsa, melyeknél az első 4 kérdés mindegyikére igen választ nyilatkozik.
+Folytatja a nyilatkozat mentését?""
+
+A ""Nem"" gombra kattintva az ablak bezárul és folytatóható a nyilatkozat mezőinek szerkesztése, az ""Igen"" gombra kattintva a nyilatkozat mentésre kerül és a rendszer a következő oldalra navigál: Iskola/UjKategoriasKepesitesJelentkezes/CreateLezaroOldal/400023 (Összesítő).
+
+A megjelenő oldalon az alábbi információk és funkciók érhetők el:
+- Tanulói adatlap
+- Nyilatkozatok a vezetői engedély automatikus kiállításához (""Auto. Vez. Eng. Nyomtatás"" gomb)
+- Ellenőrzések
+- Tanulói adatlap kezelése (""Tanulói adatlap szerkesztése"" gomb, ""Tanfolyamadatok"" gomb)
+- Új tanulói adatlap kitöltés (""Új tanulói adatlap"" gomb)
+",,,
+,,,"39","Nyilatkozat mentése az első négy kérdés esetén megadott ""Igen"" értékkel a ""Mentés"" gombra kattintva.
+","A gombra kattintást követően a nyilatkozat mentésre kerül és a rendszer a következő oldalra navigál: Iskola/UjKategoriasKepesitesJelentkezes/CreateLezaroOldal/400023 (Összesítő).
+A megjelenő oldalon az alábbi információk és funkciók érhetők el:
+- Tanulói adatlap
+- Nyilatkozatok a vezetői engedély automatikus kiállításához (""Auto. Vez. Eng. Nyomtatás"" gomb)
+- Ellenőrzések
+- Tanulói adatlap kezelése (""Tanulói adatlap szerkesztése"" gomb, ""Tanfolyamadatok"" gomb)
+- Új tanulói adatlap kitöltés (""Új tanulói adatlap"" gomb)
+",,,
+"124173","Test Case","Tanfolyamadatok rögzítése - SZK-002, SZK-006",,,,"Pallasz 2.0\Külsős tesztelői csapat","Endrész Gábor (Multicontact) <RCINET\endreszg>","Design"
+"115812","Shared Steps",,"1","Login (képző szerv) - Tanulói adatlap szerkesztése",,,,
+,,,"1.1","A https://tesztekapu.pallasz.hu/ oldal megnyitása (környezetfüggő URL).
+","Megnyílik a KAV oldala, ahol az alábbi ágazatokból és kategóriákból van lehetőség választani:
+Közúti vizsgáztatás:
+- Jelentkezés kategóriás képzésre
+- Szaktanfolyami okmánycsere
+- Közúti járművezetők utánképzése
+Légügy:
+- Légügyi okmánycsere
+Pályaalkalmassági vizsgálat:
+- PÁV ügyintézés
+Szakoktatók és szakoktató jelöltek:
+- Vizsgajelentő leadása
+- Hospitálás és tanítási órák lejelentése
+Képző szervek (Autósiskolák)
+Vizsgabiztos
+",,,
+,,,"1.2","Képző szervek (Autósiskolák) bejelentkező oldal megnyitása (Képző szervek (Autósiskolák) gomb megnyomása)
+","Megnyílik a beleptetes/Kepzoszervek oldal, amelyen az alábbi lehetőségek közül van lehetőség választani:
+- Kategóriás
+- Légügy
+- Szaktanfolyami
+- Utánképzés
+- Vasút
+",,,
+,,,"1.3","""Kategóriás"" gomb megnyomása
+","Megnyílik az ""Iskolai bejelentkezés"" oldal, felhasználónév és jelszó megadható.
+",,,
+,,,"1.4","Bejelentkezés megfelelő jogosultságú felhasználóval a https://tesztekapuauth.pallasz.hu/Kategorias címre (környezetfüggő URL).
+A képző szerv regisztrációját vezető ügyintéző szerepkörű felhasználó végzi. A regisztráció megerősítéséről és a jelszó megváltoztatásáról e-mail üzenetet küld a rendszer. Ezekkel az adatokkal lehet bejelentkezni a rendszerbe képző szervként.
+","Felhasználónév és jelszó megadását követően megjelenik az oldalon a kétlépcsős hitelesítés.
+",,,
+,,,"1.5","Hitelesítő kód megadása és belépés a rendszerbe
+","Megnyílik a https://tesztkvar.pallasz.hu/iskola (Iskola) oldal, megjelennek a Rendszerüzenetek.
+Bejelentkezést követően a szerepkörnek (képző szerv) megfelelő menüpontok és szolgáltatások jelennek meg, és érhetők el.
+",,,
+,,,"1.6","Tanuló / Tanulói adatlap menüpont kiválasztása a főmenüből.
+","Megnyílik az Iskola/UjKategoriasKepesitesJelentkezes (Tanulói adatlap).
+Az oldalon megjelenik egy Szűrő blokk amely a rögzített tanulói adatlapok listájának szűkítésére szolgál.
+A szűrő alatt megjelenik a már rögzített tanulói adatlapok listája a következő adatokkal:
+- Tanuló azonosító
+- Név
+- Születési idő
+- Anyja neve
+- Képzés
+- Tanf. típus
+
+A tanulói adatlapok sorainak jobb szélén megjelenik az adott adatlap szerkesztéséhez szükséges ""Szerkesztés"" ikon.
+",,,
+,,,"1.7","Adatlap szerkesztése a ""Szerkesztés"" ikonra kattintva.","Az ikon megnyomásával megnyílik a Iskola/UjKategoriasKepesitesJelentkezes/Edit/300062#!Alapadatok oldal (Tanulói adatlap szerkesztése). Az oldalon megjelennek az alábbi fülek (tab): 
+- Alapadatok
+- Okmányok
+- Nyilatkozatok
+- Ellenőrzések
+
+A fenti fülek közül csak az Alapadatok aktív és a többi is kiválasztható. A linkben lévő azonosítószám adatlaponként változik.
+",,,
+,,,"2","Tanfolyamadatok megadásához szükséges oldal megnyitása a megjelenő oldal jobb felső sarkában található ""Tanfolyamadatok"" gombra kattintva.","A kattintást követően megjelenik az Iskola/UjKategoriasKepesitesJelentkezes/KepzoSzerviAdatszolgaltatas?jellapId=300062#!Tanfolyam (Tanfolyamadatok) oldal.
+Az oldalon megjelnek az alábbi fülek (tab):
+- Tanfolyam
+- Mentességek
+
+A ""Beküldés"" gomb inaktív, nem kattintható.
+",,,
+,,,"3","Tanfolyam típus kiválasztása a legördülő mezőből.","Az oldalon megjelenő tanfolyamadatok blokkban kiválasztható a szükséges tanfolyamt típus. A legördülő lista értkei a következők:
+- E-learning képzés
+- Jogszabály alapján tanfolyammentes
+- Tantermi képzés.",,,
+,,,"4","Tantermi képzés választása a legördülő listából.","A Tantermi képzés választása esetén amennyiben a tanuló hozzárendelésre került egy tantermi képzéssel rendelkező tanrendhez az alábbi mezők jelennek meg
+- Tanuló azonosító
+- Tanfolyam kezdete
+
+A mezők inaktívak és nem szerkeszthetők, a rögzített tanrendben és az ahhoz kapcsolódó véglegesített névsornak megfelelő adatokat tartalmazzák.
+
+Amennyiben a tanuló még nem került hozzárendelésre egy tantermi képzéssel rendelkező tanrendhez sem az alábbi figyelmeztető üzenet jelenik meg:
+""A tanuló még nem szerepel egy tanfolyami névsorban sem!""",,,
+,,,"5","A Tanfolyam típus kiválasztását követően a megfejelenő Speciális vizsaigény blokkban megadjuk a szükséges adatokat.","A megjelenő blokkban az alábbi mezők jelennek meg:
+- SZEV vizsga nyelve
+- Szóbeli/Írásbeli vizsgaigénylés benyújtása
+- Igénylés típusa
+- Nyelv
+- Csatolmány feltöltése
+
+Az Igénylés típusa, Nyelv és Csatolmány feltöltése lehetőségek csak abban az esetben jelennek meg ha Szóbeli/Írásbeli vizsgaigénylés benyújtása rádiógomb értéke ""Igen"" állapotban van. 
+
+A kötelező mezők kiöltését a rendszer kikényszeríti. A mezők kitölthetők. hiány, vagy formai eltérés esetén egyértelmű hibát jelez az oldal.
+",,,
+,,,"6","Csatolmány feltöltése helyes formátumban, vagy méretben (pdf, maximum 5 MB-ot) a ""Csatolmány feltöltése"" gombra kattintva.
+","A gombra kattintva megjelenik a böngésző fájl feltöltési ablaka. Az ablakban kiválasztásra kerül egy pdf kiterjesztésű fájl amely nem haladja meg az 5 MB-ot. A Megnyitás gombra kattintva a fájl feltöltésre kerül és az ikonja a nevével együtt megjelenik az űrlap alján. A fájl sorának jobb szélén található ""X"" ikon megnyomásával az adott csatolmány eltávolítható a listából.
+",,,
+,,,"7","A hiánytalanul kitöltött adatlap mentése (minimum a kötelező mezők ki vannak töltve). Az oldal alján a ""Mentés"" gomb megnyomása.
+","A kattintást követően hiba nélkül elmenti a rendszer a megadott adatokat és az oldal jobb felső sarkában megjelenik a ""A művelet sikeresen végrehajtódott."" üzenet. Az oldalon  megjelennek a korábban megadott adatok megfelelő helyen és minőségben, azon mezők értéke amelyek a korábbiakban szerkeszthetők voltak jelenleg is szerkeszthetők.A ""Beküldés"" gomb aktívvá válik.
+",,,
+,,,"8","Mentesség adatok rögzítése a Mentességek fülre (tab) kattintva.","A Mentességek fülön amennyiben a képzéshez tartozó tárgyakból nem lehetséges mentességet kérni az alábbi üzenet jelenik meg:
+""A képzéshez tartozó tárgyakból nem lehet mentességet kérni!""
+
+Amennyiben lehetséges a következő mezők jelennek meg:
+- Annak jelzése, hogy kér-e mentességet
+- Felmentés számának megadása*
+- Kiállítás dátuma (dátumválasztó, vagy manuális bevitel)*
+- Felmentés megnevezése*
+- Igazoló okirat feltöltése
+
+A kötelező mezők kiöltését a rendszer kikényszeríti. A mezők kitölthetők. hiány, vagy formai eltérés esetén egyértelmű hibát jelez az oldal.
+",,,
+,,,"9","Igazoló okirat feltöltése helytelen formátumban, vagy méretben (nem pdf, 5 MB-ot meghaladó).","A gombra kattintva megjelenik a böngésző fájl feltöltési ablaka. Az ablakban kiválasztásra kerül egy nem pdf kiterjesztésű fájl. A Megnyitás gombra kattintva a következő hibaüzenet jelenik meg:
+""Nem megengedett fájl kiterjesztés!""
+
+A gombra kattintva megjelenik a böngésző fájl feltöltési ablaka. Az ablakban kiválasztásra kerül egy 5 MB-ot meghaladó méretű fájl. A Megnyitás gombra kattintva a következő hibaüzenet jelenik meg:""A fájl mérete nagyobb, mint a megengedett maximum. (5MB)""",,,
+,,,"10","Igazoló okirat feltöltése helyes formátumban, vagy méretben (pdf, maximum 5 MB-ot).","A gombra kattintva megjelenik a böngésző fájl feltöltési ablaka. Az ablakban kiválasztásra kerül egy pdf kiterjesztésű fájl amely nem haladja meg az 5 MB-ot. A Megnyitás gombra kattintva a fájl feltöltésre kerül és az ikonja a nevével együtt megjelenik az űrlap alján. A fájl sorának jobb szélén található ""X"" ikon megnyomásával az adott csatolmány eltávolítható a listából.
+",,,
+,,,"11","A hiánytalanul kitöltött adatlap mentése (minimum a kötelező mezők ki vannak töltve). Az oldal alján a ""Mentés"" gomb megnyomása.
+","A kattintást követően hiba nélkül elmenti a rendszer a megadott adatokat és az oldal jobb felső sarkában megjelenik a ""A művelet sikeresen végrehajtódott."" üzenet. Az oldalon  megjelennek a korábban megadott adatok megfelelő helyen és minőségben, azon mezők értéke amelyek a korábbiakban szerkeszthetők voltak jelenleg is szerkeszthetők.
+",,,
+,,,"12","Képző szervi adatszolgáltatás beküldése a ""Beküldés"" gombra kattintva.
+","A gombra kattintva megjelenik a Képző szervi adatszolgáltatás ablak amelyben a korábbiakban rögzített adatok jelennek meg a megfelelő helyen és minőségben.
+Az ablak alján a ""Mégsem"" gombra kattintva tovább folytatható az adott tanulóhoz kapcsolódó tanfolyam adatok szerkesztése.
+A ""Beküldés"" gombra kattintva elküldjük az adatszolgáltatást. Amennyiben a tanulói adatlap legfrissebb verziója még nem került iktatásra erről egy figyelmeztető üzenetet ad a rendszer. Majd az oldal jobb felső sarkában megjelenik a ""A művelet sikeresen végrehajtódott."" üzenet. A rendszer elnavigál minket a Tanulói adatlap oldalra ahol az adatlapot már csak a beküldött adatlapokra szűrve találjuk meg.
+",,,
+"124174","Test Case","Tanulói iratok fogadása (elfogadás) - KAV-002",,,,"Pallasz 2.0\Külsős tesztelői csapat","Szombati Zoltán (Multicontact) <RCINET\szombatiz>","Design"
+,,,"1","Előfeltételek:
+- Kategóriás ügyintéző rögzítése
+- Tanulói jelentkezés (KAÜ) / Képzőszervi jelentkeztetés
+","
+",,,
+"115779","Shared Steps",,"2","Login (kategóriás ügyintéző)",,,,
+,,,"2.1","A https://tesztauth.pallasz.hu/ oldal megnyitása (környezetfüggő URL)
+","Megnyílik az ""Központi bejelentkezés"" oldal, felhasználónév és jelszó megadható.",,,
+,,,"2.2","Bejelentkezés megfelelő jogosultságú felhasználóval.
+A kategóriás ügyintéző regisztrációját vezető ügyintéző szerepkörű felhasználó 
+végzi. A regisztráció megerősítéséről és a jelszó megváltoztatásáról 
+e-mail üzenetet küld a rendszer. Ezekkel az adatokkal lehet 
+bejelentkezni a rendszerbe kategóriás ügyintézőként.","Megnyílik a https://tesztkatvizs.pallasz.hu/ugyintezo (Kategóriás) oldal.
+Bejelentkezést követően a szerepkörnek (kategóriás ügyintéző) megfelelő menüpontok és szolgáltatások jelennek meg, és érhetők el.",,,
+,,,"3","Ügykezelés / Tanulói iratok fogadása menüpont kiválasztása (két helyről is kiválasztható: nyitóoldali blokk és a legördülő főmenü)","Megnyílik az Ugyintezo/Ugy/UgyAtemeles#!Elfogadas oldal (Tanulói iratok fogadása).
+Két fül (tab) található az oldalon, Elfogadás és Elutasítás, mindkettő aktív, kattintható.
+
+Az Elfogadás fülön az alábbi üzenet jelenik meg:
+""Formailag helyes dokumentumok érkeztetése""
+Az oldalon megjelenő blokk az alábbi mezőket tartalmazza:
+- Típus: alapértelmezett értéke a Tanulói adatlap, ezen kívül választható a Vezetői engedély nyilatkozat.
+- Jelentkezési adatlap vonalkódja* / Vezetői engedély nyilatkozat vonalkódja*: a Típus függvényében változik.
+A blokk jobb alsó részén található az Átemelés gomb, amely aktív, kattintható.
+ 
+Az Elutasítás fülön az alábbi üzenet jelenik meg:
+""Formailag hibás/hiányos dokumentumok érkeztetése""
+Az oldalon megjelenő blokk az alábbi mezőket tartalmazza:
+- Típus: alapértelmezett értéke a Tanulói adatlap, ezen kívül választható a Vezetői engedély nyilatkozat.
+- Jelentkezési adatlap vonalkódja* / Vezetői engedély nyilatkozat vonalkódja*: a Típus függvényében változik.
+- Elutasítás oka*: rögzített értékkészletből választható egy érték.  
+A blokk jobb alsó részén található a Megtagadás gomb, amely aktív, kattintható.
+",,,
+,,,"4","Az Elfogadás blokk mezőinek kitöltése és az Átemelés gombra kattintás
+","A mezők kitölthetők, módosíthatók, hiány, vagy formai eltérés esetén egyértelmű hibát jelez az oldal.
+A kötelező mezők kitöltését a rendszer kikényszeríti.
+Nem létező Tanulói adatlap / Vezetői engedély nyilatkozat esetén felugró ablakban az alábbi figyelmeztető üzenet jelenik meg:
+""Nem létezik ilyen tanulói adatlap!"" / ""Nem létezik ilyen vezetői engedély nyilatkozat!""
+
+Az Átemelés gombra kattintást követően az oldal jobb felső sarkában megjelenik a ""A művelet sikeresen végrehajtódott."" üzenet.
+Amennyiben korábban már be lettek küldve az adatok, a rendszer egy felugró ablakban jelzi.
+
+A tanulói adatlap beküldését követően a képző szerv számára megjelenik az adatlap érkeztetéséről szóló üzenet (a tanuló adatlapján).
+A vezetői engedély nyilatkozat beküldését követően a képző szerv megtekintheti a tanuló adatlapján az érkeztetés állapotát és időpontját.
+",,,
+"124175","Test Case","Előügy kezelése",,,,"Pallasz 2.0\Külsős tesztelői csapat","Szombati Zoltán (Multicontact) <RCINET\szombatiz>","Design"
+,,,"1","Előfeltételek:
+- Kategóriás ügyintéző rögzítése
+- Tanulói jelentkezés (KAÜ) / Képzőszervi jelentkeztetés","
+",,,
+"115779","Shared Steps",,"2","Login (kategóriás ügyintéző)",,,,
+,,,"2.1","A https://tesztauth.pallasz.hu/ oldal megnyitása (környezetfüggő URL)
+","Megnyílik az ""Központi bejelentkezés"" oldal, felhasználónév és jelszó megadható.",,,
+,,,"2.2","Bejelentkezés megfelelő jogosultságú felhasználóval.
+A kategóriás ügyintéző regisztrációját vezető ügyintéző szerepkörű felhasználó 
+végzi. A regisztráció megerősítéséről és a jelszó megváltoztatásáról 
+e-mail üzenetet küld a rendszer. Ezekkel az adatokkal lehet 
+bejelentkezni a rendszerbe kategóriás ügyintézőként.","Megnyílik a https://tesztkatvizs.pallasz.hu/ugyintezo (Kategóriás) oldal.
+Bejelentkezést követően a szerepkörnek (kategóriás ügyintéző) megfelelő menüpontok és szolgáltatások jelennek meg, és érhetők el.",,,
+,,,"3","Ügykezelés / Előügy menüpont kiválasztása (két helyről 
+is kiválasztható: nyitóoldali blokk és a legördülő főmenü)","Megnyílik az előügy oldal, amelyen található egy szűrő blokk és alatta egy találati lista.
+A szűrő blokk az alábbi mezőket tartalmazza:
+- Teljes név
+- Vezetéknév kezdőbetűje
+- Tanuló azonosító
+- Állapot
+A Részletes szűrés feliratra kattintva további szempontok szerint van lehetőség szűrni:
+- Anyja neve
+- Születési hely
+- Születési idő
+- Kategória
+- Képzés
+A szűrő blokk tartalmaz egy Szűrő feltételek törlése és Szűrés gombot.
+",,,
+,,,"4","Szűrés gomb megnyomása
+","A szűrési feltételeknek megfelelő elemek megjelennek a találati listában.
+",,,
+,,,"5","Ellenőrzés gomb megnyomása (a találati lista sorainak utolsó oszlopában található három vízszintes vonal)
+","Megnyílik az Előügy / Ellenőrzés oldal.
+
+A jobb felső részen látható a Hátralévő idő, melynek kezdeti értéke 5 perc, az oldal megnyitásakor elindul a visszaszámláló.
+
+Az oldalon található az Előügy adatok blokk, amelyre kattintva megjelennek az alábbi mezők, amelyek nem módosíthatók, csak olvashatók:
+- Azonosító
+- Név
+- Kategória
+- Képzés
+
+Található az oldalon egy folyamatjelző, az 1-es pont (Személyes adatok és okmányok) aktív, a többi nem választható ki.
+
+A Személyes adatok blokk az alábbi mezőket tartalmazza, amelyek nem módosíthatók, csak olvashatók:
+- Név
+- Anyja neve
+- Születési név
+- Születési hely, idő
+A blokkban található a Kiválasztva gomb.
+
+Az oldalon lefelé haladva az alábbi blokkok találhatóak:
+Összerendelési Nyilvántartás alapú személyes adatok adatellenőrzés
+VEN alapú személyes adatok ellenőrzés
+Személyi okmány ellenőrzés
+
+Az oldal alsó részén található a Lekérdezett adatok frissítése és a Jóváhagyom gomb. 
+",,,
+,,,"6","Jóváhagyom gomb megnyomása
+","A folyamatjelző 2-es pontja (Eltiltások) aktívvá válik, az oldalon az alábbi blokkok találhatóak:
+Tanulói nyilatkozat
+Eltiltás ellenőrzés
+
+Az oldal alsó részén található a Lekérdezett adatok frissítése és a Jóváhagyom gomb.",,,
+,,,"7","Jóváhagyom gomb megnyomása","A folyamatjelző 3-as pontja (Vezetői engedély) aktívvá válik, az oldalon található a Vezetői engedély ellenőrzése blokk.
+
+Az oldal alsó részén található a Lekérdezett adatok frissítése és a Jóváhagyom gomb.",,,
+,,,"8","Jóváhagyom gomb megnyomása","A folyamatjelző 4-as pontja (Eü alkalmasság) aktívvá válik, az oldalon az alábbi blokkok találhatóak:
+Tanuló ügyéhez szükséges egészségi alkalmassági csoport
+Elektronikus egészségi alkalmassági igazolás
+Papír alapú egészségi alkalmassági igazolás
+Vezetői engedély alapú egészségi alkalmassági igazolás 
+
+Az oldal alsó részén található gombok:
+Vissza
+Lekérdezett adatok frissítése
+Nem igazolt
+Jóváhagyom ",,,
+,,,"9","Jóváhagyom gomb megnyomása
+","A folyamatjelző 6-os pontja (Személytörzs összerendelés) aktívvá válik, az oldalon található az Alapadatok blokk, amely az alábbi mezőket tartalmazza:
+- Teljes név: nem módosítható
+- Születési név: nem módosítható
+- Anyja neve: nem módosítható
+- Ellenőrzött: nem módosítható
+- Születési hely: nem módosítható
+- Születési idő: nem módosítható
+- Egyezések keresése: lenyíló lista, rögzített értékkészletből választható egy érték
+A blokk jobb alsó részén található a Keresés gomb. 
+
+Az Alapadatok blokk alatt megjelenik egy találati lista, az oldal alsó részén található az Új személytörzs gomb.",,,
+,,,"10","Új személytörzs gomb megnyomása
+","Felugró ablakban megjelenik egy megerősítő üzenet:
+""Biztosan új személytörzset kíván létrehozni?"".
+Az ablakban az Igen és Nem gombok közül van lehetőség választani.
+",,,
+,,,"11","Új személytörzs megerősítése (az Igen gomb megnyomása)
+","Az oldal jobb felső sarkában megjelenik a ""A művelet sikeresen végrehajtódott."" üzenet.
+Az oldalon látható az Előügyben szereplő adatok és a Személytörzsben szereplő adatok táblázatos formában, valamint a táblázat alatt az Ügy indítása gomb.
+",,,
+,,,"12","Ügy indítása gomb megnyomása
+","Felugró ablakban megjelenik a ""Biztosan végrehajtja a műveletet?"" üzenet, és két gomb: Igen/Nem.",,,
+,,,"13","Ügy indítás megerősítése (az Igen gomb megnyomása)
+","Az igen gomb hatására a rendszer betölti az Összesítő oldalt, látható az Előfeltétel kiértékelés, valamint az Ügyhöz lépés és a Befejezés gombok.
+",,,
+,,,"14","Befejezés gomb megnyomása
+","A rendszer az Előügy oldalra navigál, ahol az elindított ügy már nem jelenik meg az előügyek között.",,,
+"124176","Test Case","Jelenléti ív módosítása, távozás rögzítése/törlése- SZK-009",,,,"Pallasz 2.0\Külsős tesztelői csapat","Farkas Anna <RCINET\farkasan>","Design"
+"116591","Shared Steps",,"1","Login (szakoktató) - általános",,,,
+,,,"1.1","A https://tesztekapu.pallasz.hu/ oldal megnyitása (környezetfüggő URL).
+","Megnyílik a KAV oldala, ahol az alábbi ágazatokból és kategóriákból van lehetőség választani:
+Közúti vizsgáztatás:
+- Jelentkezés kategóriás képzésre
+- Szaktanfolyami okmánycsere
+- Közúti járművezetők utánképzése
+Légügy:
+- Légügyi okmánycsere
+Pályaalkalmassági vizsgálat:
+- PÁV ügyintézés
+Szakoktatók és szakoktató jelöltek:
+- Vizsgajelentő leadása
+- Hospitálás és tanítási órák lejelentése
+Képző szervek (Autósiskolák)
+",,,
+,,,"1.2","Szakoktatók bejelentkező oldal megnyitása a Vizsgajelentő leadása (gomb megnyomása)
+","Megnyílik a ""Szakoktatói bejelentkezés"" oldal, felhasználónév és jelszó megadható.
+",,,
+,,,"1.3","Bejelentkezés megfelelő jogosultságú felhasználóval a https://tesztekapuauth.pallasz.hu/szakoktato címre (környezetfüggő URL).
+A szakoktató regisztrációját vezető ügyintéző szerepkörű felhasználó végzi. A regisztráció megerősítéséről és a jelszó megváltoztatásáról e-mail üzenetet küld a rendszer. Ezekkel az adatokkal lehet bejelentkezni a rendszerbe szakoktatónként.
+","Felhasználónév és jelszó megadását követően megjelenik az oldalon a kétlépcsős hitelesítés.
+",,,
+,,,"1.4","Hitelesítő kód megadása és belépés a rendszerbe
+","Megnyílik a https://tesztekapuauth.pallasz.hu/Szakoktato (oldal, megjelennek a Rendszerüzenetek.
+Bejelentkezést követően a szerepkörnek (szakoktató) megfelelő menüpontok és szolgáltatások jelennek meg, és érhetők el.
+",,,
+,,,"2","Jelenléti ív menüpont kiválasztása.
+","Megnyílik a Szakoktato/JelenletiIv oldal, melyen az alábbi gombok jelennek meg:
+
+- Ma
+- jobbra és balra mutató nyilak
+- mai dátum
+- frissítés gomb
+
+Az oldal alapértelmezetten az aznapi dátumot mutatja.
+",,,
+,,,"3","Módosítani kívánt jelenléti ívre kattintás.","A jobbra és balra mutató nyilak segítségével a szerkeszteni kívánt eseményre kattintás után Szakoktato/JelenletiIv/Edit/400175 oldalra navigál a rendszer, ahol megjelennek az időpont adatai (nem kattinthatók), valamint a tanuló adatai, melynél csak a jelenlét Megjelent/Hiányzik rádió gombok kattinthatók.
+Az oldalon megjelennek még a piros Tanóra lemondás, zöld Jelenléti ív lezárása és Mindenki megjelent gombok.",,,
+,,,"4","Mindenki megjelent gomb megnyomása.","Az oldalon megjelenik a Biztosan végrehajtja a műveletet? üzenet, melyre az Igen és Nem gombok segítségével lehet válaszolni. Az Igen gomb megnyomásával az oldal a Jelenléti ív megadása oldalra navigál, ahol az összes tanuló jelenléte Megjelentre állt át. ",,,
+,,,"5","Távozás rögzítése a megfelelő tanuló sorába lévő Távozás gomb megnyomásával.","Az oldalon megjelenik a Biztosan végrehajtja a műveletet? üzenet, melyre az Igen és Nem gombok segítségével lehet válaszolni. Az Igen gomb megnyomásával az oldal a Jelenléti ív megadása oldalra navigál, ahol a távozás rögzítésénél megjelenik a rögzítés pontos időpontja percre pontosan. 
+",,,
+,,,"6","Távozás rögzítésének törlése a megfelelő tanuló sorában lévő Törlés gomb megnyomásával. ","Az oldalon megjelenik a Távozás visszavonása blokk, melyben szöveges mezőként kötelezően megadandó a Visszavonás oka*. A blokk alján megjelennek a Mégsem és Ok gombok.
+",,,
+,,,"7","Ok gomb megnyomása.","Kattintást követően az oldal jobb felső sarkában megjelenik a ""A művelet sikeresen végrehajtódott."" üzenet. A rendszer a Jelenléti ív megadása oldalon marad. A frissülő űrlap tartalmazza a korábban megadott adatokat megfelelő helyen és minőségben, a távozás rögzítésénél újabb távozás adható meg.
+",,,
+"124177","Test Case","Elméleti vizsgajelentkezés",,,,"Pallasz 2.0\Külsős tesztelői csapat","Endrész Gábor (Multicontact) <RCINET\endreszg>","Design"
+"115088","Shared Steps",,"1","Login (képző szerv)",,,,
+,,,"1.1","A https://tesztekapu.pallasz.hu/ oldal megnyitása (környezetfüggő URL).","Megnyílik a KAV oldala, ahol az alábbi ágazatokból és kategóriákból van lehetőség választani:
+Közúti vizsgáztatás:
+- Jelentkezés kategóriás képzésre
+- Szaktanfolyami okmánycsere
+- Közúti járművezetők utánképzése
+Légügy:
+- Légügyi okmánycsere
+Pályaalkalmassági vizsgálat:
+- PÁV ügyintézés
+Szakoktatók és szakoktató jelöltek:
+- Vizsgajelentő leadása
+- Hospitálás és tanítási órák lejelentése
+Képző szervek (Autósiskolák)
+Vizsgabiztos",,,
+,,,"1.2","Képző szervek (Autósiskolák) bejelentkező oldal megnyitása (Képző szervek (Autósiskolák) gomb megnyomása)","Megnyílik a beleptetes/Kepzoszervek oldal, amelyen az alábbi lehetőségek közül van lehetőség választani:
+- Kategóriás
+- Légügy
+- Szaktanfolyami
+- Utánképzés
+- Vasút",,,
+,,,"1.3","""Kategóriás"" gomb megnyomása","Megnyílik az ""Iskolai bejelentkezés"" oldal, felhasználónév és jelszó megadható.",,,
+,,,"1.4","Bejelentkezés megfelelő jogosultságú felhasználóval a https://tesztekapuauth.pallasz.hu/Kategorias címre (környezetfüggő URL).
+A képző szerv regisztrációját vezető ügyintéző szerepkörű felhasználó végzi. A regisztráció megerősítéséről és a jelszó megváltoztatásáról e-mail üzenetet küld a rendszer. Ezekkel az adatokkal lehet bejelentkezni a rendszerbe képző szervként.","Felhasználónév és jelszó megadását követően megjelenik az oldalon a kétlépcsős hitelesítés.",,,
+,,,"1.5","Hitelesítő kód megadása és belépés a rendszerbe","Megnyílik a https://tesztkvar.pallasz.hu/iskola (Iskola) oldal, megjelennek a Rendszerüzenetek.
+Bejelentkezést követően a szerepkörnek (képző szerv) megfelelő menüpontok és szolgáltatások jelennek meg, és érhetők el.",,,
+,,,"2","Vizsgaszervezés / Elméleti vizsga jelentkezés adatlap menüpont kiválasztása a főmenüből.
+","Megnyílik az Iskola/ElmeletiVizsgajelentkezes oldal (Elméleti vizsgajelentkezés).
+Az oldalon megjelennek az elméleti vizsaga jelentkezés rögzítésének folyamatlépései, az éppen aktuális lépéssel kiemelve:
+- Típus kiválasztása
+- Tanulók kiválasztása
+- Vizsgák kiválasztása
+- Időpont kiválasztás
+
+Az oldal alján megjelenik a ""Tovább"" gomb amely aktív és kattintható.
+",,,
+,,,"3","Típus kiválasztása.","A megnyitott oldalon megjelenik a Típus kiválasztása blokk amelyben megadhatók az alábbi adatok:
+- Vizsga típus*
+
+A legördülőlista értékkészlete az alábbiakból áll össze:
+- Esettanulmány
+- Írásbeli vizsga
+- Számítógépes elméleti vizsga
+- Szóbeli vizsga
+
+A kötelező mezők kiöltését a rendszer kikényszeríti. A mezők kitölthetők. hiány, vagy formai eltérés esetén egyértelmű hibát jelez az oldal.
+",,,
+,,,"4","A hiánytalanul kitöltött adatlap mentése (minimum a kötelező mezők ki vannak töltve). Az oldal alján a ""Tovább"" gomb megnyomása.
+","A kattintást követően hiba nélkül tovább léptet a rendszer a folyamat következő lépésére. Az oldalon a fenti folyamat jelző linkjeinek a segítségével visszaléphetünk a korábbi lépésre, ahol megjelennek a korábban megadott adatok megfelelő helyen és minőségben, a mezők tartalma szerkeszthető.
+",,,
+,,,"5","Tanulók kiválasztása.","A megnyitott oldalon megjelenik a Tanulók kiválasztása blokk amelyben az alábbi üzenet jelenik meg és megadhatók az alábbi adatok:
+""A kiválasztott vizsgajegyzőkönyvre a rendszer automatikusan törekszik a megadott tanulókból a legtöbbet felhelyezni.""
+- Születési idő (manuális vagy dátumválasztó bevitel)*
+- Tanuló azonosító*
+
+A mezők mellett megjelenik a ""Hozzáadás"" gomb.
+
+A kötelező mezők kiöltését a rendszer kikényszeríti. A mezők kitölthetők. hiány, vagy formai eltérés esetén egyértelmű hibát jelez az oldal.
+",,,
+,,,"6","Tanuló hozzáadása a vizsga jelentekzéshez a ""Hozzáadás"" gombra kattintva.","A hozzáadáshoz mindkét mező megadása szükséges. A helyesen megadott adatokat követő kattintás esetén a rendszer betölti a tanuló alábbi adatait a Kiválasztott atanulók megnevezésű blokkba:
+- Név
+- Születési hely, idő
+- Anyja neve
+- Tanuló azonosító
+- Kategória
+- Képzés",,,
+,,,"7","A hiánytalanul kitöltött adatlap mentése (minimum a kötelező mezők ki vannak töltve). Az oldal alján a ""Tovább"" gomb megnyomása.
+","A kattintást követően hiba nélkül tovább léptet a rendszer a folyamat következő lépésére. Az oldalon a fenti folyamat jelző linkjeinek a segítségével visszaléphetünk a korábbi lépésre, ahol megjelennek a korábban megadott adatok megfelelő helyen és minőségben, a mezők tartalma szerkeszthető.
+",,,
+,,,"8","Vizsgák kiválasztása.
+","A megnyitott oldalon megjelenik a Vizsgák kiválasztása blokk amelyben az alábbi üzenet jelenik meg és megadhatók az alábbi adatok:
+""A tanuló adatait tartalmazó sorra kattintva, a lenyíló táblázatban választhatja ki a vizsgáit, melyekhez időpontot kereshet neki.""
+Tanuló adatai:
+- Név
+- Születési hely, idő
+- Anyja neve
+- Tanuló azonosító
+- Kategória
+- Képzés
+- Vizsgák
+- Kiválaszott vizsgák hossza: 0 perc (alap eseteben)
+- Kiválasztott vizsgák díja: 0 Ft (alap esetben)
+- Figyelmeztető ikon a következő tooltip üzenettel: ""Személyenként legalább egy vizsga kiválasztása kötelező""
+
+A tanuló adatai alatt a következő mezők jelennek meg:
+- Kiválasztott vizsgák díja összesen: 0 Ft (alap esetben)
+- Gyűjtőszámlán rendelkezésre álló keret: gyűjtőszámlán lévő összeg forintban.
+
+A kötelező mezők kiöltését a rendszer kikényszeríti. A mezők kitölthetők. hiány, vagy formai eltérés esetén egyértelmű hibát jelez az oldal.
+",,,
+,,,"9","Vizsgák kiválasztása az adott Tanuló adataira kattintva.","A kattintást követően megjelenik a kategóriája és képzése alapján választható vizsga lehetőségeket tartalmazó táblázat az alábbi adatokkal
+- Választó mező
+- Képzés
+- Vizsgatárgy
+- Vizsga hossza
+- Vizsgadíj
+- Státusz
+
+A táblázat alatt a következő mezők jelennek meg:
+- Kiválasztott vizsgák díja összesen: 0 Ft (alap esetben)
+- Kiválasztott vizsgák hossza összesen: 0 perc (alap esetben)
+
+A sorok elején lévő jelölő négyzetekkel kiválaszthatók a megfelelő vizsgatárgyak sorai. A kiválasztást követően a hozzájuk rögzített időtartam és vizsgadíj összege megjelenik a megfelelő mezőkben.
+",,,
+,,,"10","A hiánytalanul kitöltött adatlap mentése (minimum a kötelező mezők ki vannak töltve). Az oldal alján a ""Tovább"" gomb megnyomása.
+","A kattintást követően az alábbi figyelmeztető üzenet jelenik meg:
+""Az Időpont kiválasztása lépésre érve az előző lépésekre való navigálás nem lehetséges! Biztosan továbblép?""
+A ""Nem"" gombra kattintva tovább folytatható a vizsgák kiválasztása.
+Az ""Igen"" gombra kattintva hiba nélkül tovább léptet a rendszer a folyamat következő lépésére. Az oldalon a fenti folyamat jelző linkjeinek a segítségével már nem léphetünk vissza a korábbi lépésekre.
+",,,
+,,,"11","Időpont kiválasztása","A megnyitott oldalon megjelenik az Időpont kiválasztása blokk amelyen a felső blokkban megjelenik a szűrő, alatta pedig a szűrési feltételeknek megfelelő találati lista. 
+Az alábbi mezők biztosítják a szűrési feltételek megadását: 
+- Keresett időintervallum*
+- Napszak
+- Helyszín*
+- Automatikus helyettesítő foglalás (rádiógomb értékei ""Igen"", ""Nem"")
+
+A találati lista alatt megjelennek a tanuló adatai a korábbi lépésekben megadott adatokkal a megfelelő helyen és minőségben:
+- Név
+- Születési hely, idő
+- Anyja neve
+- Tanuló azonosító
+- Kategória
+- Képzés
+- Vizsgák
+- Kiválaszott vizsgák hossza:
+- Kiválasztott vizsgák díja:
+
+A kötelező mezők kiöltését a rendszer kikényszeríti. A mezők kitölthetők. hiány, vagy formai eltérés esetén egyértelmű hibát jelez az oldal.
+",,,
+,,,"12","Szűrőfeltételek megadása (minden mező), majd a szűrőfeltételek törlése gombra kattintás
+","A kitöltött adatokat az oldal újratöltése nélkül törli minden mezőből, és a szűrési űrlap alapállapotra áll vissza. 
+",,,
+,,,"13","Szűrés gomb megnyomása a kötelező szűrési adatok megadását követően.
+","A rendszer a találati listában megjeleníti a feltételeknek megfelelő időpontokat. Az egyes időpontok az alábbi adatokkal rendelkeznek:
+- Időpont
+- Vizsgahelyszín
+- Azonosító
+- Telítettség
+",,,
+,,,"14","A találati listából egy tanuló adatait kell kiválasztani, és az egymást követő lépésekben ezeket egyenként megadni! Fontos, hogy egy tételhez rendelt, pontos adatok kerülnek megadásra a következő lépésekben!
+","
+",,,
+,,,"15","Napszak kiválasztása","A találati lista frissül, és egy tétel kerül megjelenítésre. Az üres találati lista, vagy több találat hibás működést jelent! 
+",,,
+,,,"16","Kiválasztott időpont hozzáadása a ""Hozzáadás"" ikonra kattintva.","Felugró ablakban az alábbi üzenet jelenik meg:
+""Az alábbi 1 tanuló jelentkeztetése sikeresen megtörtént a E-A/XX/XXXX/XXX azonosítójú vizsgajegyzőkönyvre.
+Dátum: éééé.hh.nn.
+Helyszín:
+- Tanuló neve (Tanuló azonosító) - óó:pp (időpont)""
+
+Az ablakban található a Rendben gomb.
+",,,
+,,,"17","Rendben gombra kattintás
+","A rendszer visszanavigál az Elméleti vizsga jelentkezés oldalra (Iskola/ElmeletiVizsgajelentkezes#), ahol lehetőség van új jelentkezés adatainak megadására.
+",,,
+"124179","Test Case","Új automata vezénylés rögzítése- KAV-016",,,,"Pallasz 2.0\Külsős tesztelői csapat","Farkas Anna <RCINET\farkasan>","Design"
+"115779","Shared Steps",,"1","Login (kategóriás ügyintéző)",,,,
+,,,"1.1","A https://tesztauth.pallasz.hu/ oldal megnyitása (környezetfüggő URL)
+","Megnyílik az ""Központi bejelentkezés"" oldal, felhasználónév és jelszó megadható.",,,
+,,,"1.2","Bejelentkezés megfelelő jogosultságú felhasználóval.
+A kategóriás ügyintéző regisztrációját vezető ügyintéző szerepkörű felhasználó 
+végzi. A regisztráció megerősítéséről és a jelszó megváltoztatásáról 
+e-mail üzenetet küld a rendszer. Ezekkel az adatokkal lehet 
+bejelentkezni a rendszerbe kategóriás ügyintézőként.","Megnyílik a https://tesztkatvizs.pallasz.hu/ugyintezo (Kategóriás) oldal.
+Bejelentkezést követően a szerepkörnek (kategóriás ügyintéző) megfelelő menüpontok és szolgáltatások jelennek meg, és érhetők el.",,,
+,,,"2","Vizsgaszervezés/ Vezénylés hatósági vizsgajegyzőkönyvekhez menüpont kiválasztása (két helyről is kiválasztható: nyitóoldali blokk és a legördülő főmenü)
+","Megnyílik a Vezénylés hatósági vizsgajegyzőkönyvekhez oldal, amelyen található egy Vezénylés és Automata vezénylés fül, egy szűrő blokk és a hozzá tartozó találati lista.
+A szűrő blokk az alábbi mezőket tartalmazza:
+ 
+- Vizsgajegyzőkönyv azonosító
+- Születési név
+- Vizsga napja
+- Helyszín
+- Vezénylés állapota
+A szűrő blokk tartalmaz egy Szűrő feltételek törlése és Szűrés gombot. Az oldal alján megjelenik az Új vezénylési csoport gomb.
+",,,
+,,,"3","Automata vezénylés fülre kattintás.
+","Megnyílik az Ugyintezo/Vezenyles#!AutomataVezenyles oldal, amelyen található egy szűrő blokk és a hozzá tartozó találati lista.A szűrő blokk az alábbi mezőket tartalmazza:
+ 
+- Vezénylés állapota (a betöltött paraméterekből lehet választani)
+- Időpont (manuálisan vagy dátumválasztóból)
+
+A szűrő blokk tartalmaz egy Szűrő feltételek törlése és Szűrés gombot. Az oldal alján megjelenik az Új automata vezénylés gomb. 
+",,,
+,,,"4","Új automata vezénylés gombra kattintás.
+","A megnyitott oldalon megjelenik az Új automata vezénylés blokk, melyen megadhatók az alábbi adatok:
+ 
+- Típus* (Időszakra/Napra)
+- Második vizsgabiztos vezényelhető* (Igen/Nem)
+- Időszak* (manuálisan vagy dátumválasztóból)
+Második vizsgabiztos vezényelhető mező estén az alábbi információra figyelmeztet a rendszer: Igen esetén is csak akkor kerül második vizsgabiztos vezénylésre, ha érintett olyan vizsgázó, akihez javasolt második vizsgabiztos vezénylése. A jobb alsó sarokban megjelennek a Mégsem és Mentés gombok. ",,,
+,,,"5","Mentés gombra kattintás. ","A mentés gomb aktív és kattintható. Kattintást követően az oldal jobb felső sarkában megjelenik a ""A művelet sikeresen végrehajtódott."" üzenet. A rendszer az Ugyintezo/Vezenyles#!AutomataVezenyles oldalt tölti be újra, ahol egy szűrés után a listában megjelenik az újonnan rögzített  automata vezénylés.",,,
+"124181","Test Case","Új elméleti vizsgajegyzőkönyv",,,,"Pallasz 2.0\Külsős tesztelői csapat","Endrész Gábor (Multicontact) <RCINET\endreszg>","Design"
+"116050","Shared Steps",,"1","Login (KAV ügyintéző)",,,,
+,,,"1.1","A https://tesztkatvizs.pallasz.hu/Ugyintezo/ oldal megnyitása.
+","A bejelentkezési oldal megjelenik (Központi bejelentkezés). 
+Az oldalon a bejelentkezési űrlapon megadható a felhasználónév és a jelszó. 
+
+",,,
+,,,"1.2","Felhasználónév és jelszó megadása (KAV ügyintézőt a KAV vezető ügyintéző hozhat létre), majd a Bejelentkezés gomb megnyomása. 
+","A felhasználónév és jelszó megadását követően a Bejelentkezés gomb aktív lesz, kattintható. 
+",,,
+,,,"1.3","Bejelentkezési folyamatot követően megjelenő oldal ellenőrzése.
+","Helyes adatok megadása esetén a rendszer a felhasználót belépteti, amennyiben a felhasználó több kirendeltséggel rendelkezik, akkor A Válasszon kirendeltség olvasható az oldalon, és felsorolásra kerül az összes, érvényes jogviszonnyal érintett kirendeltség.  A kirendeltségek azonosítószáma és neve látható a kijelzett listán. A kirendeltségek kattintással kiválaszthatók.",,,
+,,,"1.4","Megfelelő kirendeltség kiválasztása kattintással. 
+","A rendszer az ügyintézői felületre navigál, ahol a beállított jogosultságoknak megfelelő funkciók érhetők el az oldalon. 
+",,,
+,,,"2","Bejelentkezést követően a Vizsgaszervezés/Új elméleti vizsgajegyzőkönyv menüpontot választjuk, vagy az Elméleti viszgajegyzőkönyv menüpontra kattintva a megjelenő oldal alján található ""Új vizsgajegyzőkönyv"" gombra kattintunk.
+","A rendszer az Elméleti vizsgajegyzőkönyv meghirdetése oldalra navigál (Ugyintezo/ElmeletiVizsgajegyzokonyv/Create).
+Az oldalon az alábbi blokkok jelennek meg:
+- Fejadatok
+- További adatok
+- Időpontfoglalási adatok
+- Kategóriák kiválasztása
+- További vizsgajegyzőkönyvek generálása
+ 
+Az oldal alján megjelenik:
+- ""Mentés"" gomb.
+",,,
+,,,"3","Fejadatok megadása","A megnyitott oldalon megjelenik a Fejadatok blokk, amelyben az alábbi adatok találhatók, illetve adhatók meg: 
+- Kirendeltség (nem szerkeszthető, az ügyintéző bejelentkezésekor kiválasztott kirendeltség megnevezése jelenik meg)
+- Vizsga napja* (dátumválasztó, vagy manuális bevitel)
+- Vizsga ideje* (-tól, -ig óraválasztó legördülő listából, vagy manuális bevitel, a vizsga záró idejének későbbinek kell lennie mint a nyitónak)
+- Vizsgahelyszín* (inatkív amíg a vizsga napja és ideje nincs kitöltve, a legördülő listában a kirendeltséghez létrehozott vizsgahelyszínek megnevezése és azonosítója jelennek meg)
+- Vizsgahely* (inatkív amíg a vizsga napja és ideje nincs kitöltve, a legördülő listában a vizsgahelyszínhez létrehozott vizsgahelyek jelennek meg)
+- Vizsgajegyzőkönyv típus*
+
+A Vizsgajegyzőkönyv típus legördülő lista értékei az alábbiak lehetnek:
+- Ágazatfüggetlen SZEV
+- Kategóriás SZEV
+- Kategóriás szóbeli
+ 
+A kötelező mezők kiöltését a rendszer kikényszeríti. A mezők kitölthetők. hiány, vagy formai eltérés esetén egyértelmű hibát jelez az oldal.
+",,,
+,,,"4","További adatok megadása","A megnyitott oldalon megjelenik a További adatok blokk, amelyben az alábbi adatok találhatók, illetve adhatók meg (a mezők csak akkor szerkeszthetők amennyiben a Fejadatoknál Kategóriás szóbeli vizsgatípust választjuk ki): 
+- Speciális vizsga*
+- Létszám*
+- Nyelv* (csak tolmács választása esetén szerkeszthető)
+- Segédlet szükséges (csak tolmács választása esetén szerkeszthető)
+ 
+A kötelező mezők kiöltését a rendszer kikényszeríti. A mezők kitölthetők. hiány, vagy formai eltérés esetén egyértelmű hibát jelez az oldal.
+",,,
+,,,"5","Időpontfoglalási adatok megadása","A megnyitott oldalon megjelenik az Időpontfoglalási adatok blokk. Kategóriás szóbeli vizsgajegyzőkönyv típus választása esetén az alábbi üzenet jelenik meg a blokkban:
+""Akkor adhatók meg időpontfoglalással kapcsolatos adatok, ha olyan vizsgajegyzőkönyv típus kerül kiválasztásra, mely időpontfoglalásra meg van nyitva.""
+ 
+Ágazatfüggetlen SZEV, vagy Kategóriás SZEV vizsgajegyzőkönyv típus esetén az alábbi adatok adhatók meg:
+- Jelentkezési időszak kezedete* (dátum- és óraválasztóval, vagy manuális bevitellel)
+- Jelentkezési időszak vége* (dátum- és óraválasztóval, vagy manuális bevitellel)
+- Első jelentkezhető időpont* (óraválasztóval, vagy manuális bevitellel)
+ 
+A kötelező mezők kiöltését a rendszer kikényszeríti. A mezők kitölthetők. hiány, vagy formai eltérés esetén egyértelmű hibát jelez az oldal.
+",,,
+,,,"6","Kategóriák kiválasztása","A megnyitott oldalon megjelenik az Kategóriák kiválasztása blokk. A Vizsgahely megadása előtt az alábbi üzenet jelenik meg a blokkban:
+
+A Vizsgahely és a Vizsgajegyzőkönyv típus megadását követően megjelennek a vizsgahelyhez rögzített kategóriák, az alábbi adatokkal:
+- Ágazat
+- Kód
+- Megnevezés
+",,,
+,,,"7","További kategóriák hozzáadása a ""Kategória hozzáadása"" gomb megnyomásával. 
+","Megjelenik a Kategóriák hozzárendelése ablak, amelyben megjelenik egy szűrő blokk és a szűrésnek megfelelő találati lista.
+
+Az Ágazat lenyíló lista az alábbi értékeket tartalmazza:
+- Összes
+-Kategóriás
+-Légügyi
+-PÁV
+-Szaktanfolyami
+-Utánképzés
+-Vasúti
+
+A Szűrés gomb megnyomásával az adott kategóriába tartozó képzések listája megjelenik.
+",,,
+,,,"8","A találati listában az adott képzés melletti + ikon megnyomásával a képzés hozzáadása
+","A + gomb megnyomásával a képezhető képzés eltűnik a listából. Az ablak bezárását követően látható a Kategóriák kiválasztása blokkbana található listában.
+",,,
+,,,"9","Kategória eltávolítása a kiválasztott kategória sorának jobb szélén található ""Törlés"" ikonra kattintva.","A gombra kattintva a kiválasztott kategória eltűnik a listából és a Kategória hozzáadása ablakban újra hozzáadhatóvá válik.",,,
+,,,"10","Kategóriák visszaállítása. a ""Vizsgahely által biztosított kategórik visszaállítása"" gombra kattintva.","A gombra kattintva figyelmeztető ablak jelenik meg az alábbi üzenettel:
+""Biztosan szeretné az összes kategóriát visszaállítani?""
+
+A ""Mégsem"" gombra kattintva tovább folytatható a vizsgajegyzőkönyv szerkesztése. Az ""Igen"" gombra kattintva a lista tartalma visszaáll a módosításokat megelőző kategória listára.",,,
+,,,"11","További vizsgajegyzőkönyvek generálása","A blokkhoz tartozó mezők csak akkor láthatók ha a blokk jobb felső sarkában található rádió gomb értéke igenre van állítva.
+
+A blokkban az alábbi üzenet és mezők jelennek meg:
+""Fontos, a kötegelten generált vizsgaidőpontokat kizárólag egyesével tudja módosítani/törölni!""
+- Utolsó időpont* (dátumválasztó, vagy manuális adatbevitel)
+- Vizsganapok*
+- Jelentkezés kezdete fix
+- Jelentkezési időszak számítása sablonból",,,
+,,,"12","A hiánytalanul kitöltött adatlap mentése (minimum a kötelező mezők ki vannak töltve). Az oldal alján a Mentés gomb megnyomása.
+","A mentés gomb aktív és kattintható. Kattintást követően az oldal jobb felső sarkában megjelenik a ""A művelet sikeresen végrehajtódott."" üzenet. A rendszer az Elméleti vizsgajegyzőkönyv szerkesztése (Ugyintezo/ElmeletiVizsgajegyzokonyv/Edit/400175#!EditTabAlapadatok) oldalra navigál. A megjelenő űrlap tartalmazza a korábban megadott adatokat megfelelő helyen és minőségben. 
+
+Az űrlapon az alábbi fülek (tab) aktív állapotúak, kiválaszthatók:
+- Alapadatok
+- Vizsgázók
+- Vezénylési csoport
+- Vizsgaösszesítő
+- Módosítás
+
+Az oldal alján megjelenik :
+- a Megszüntetés gomb
+- a Mentés gomb.
+",,,
+"124183","Test Case","Vizsgajegyzőkönyv megtekintése, eredmények módosítása",,,,"Pallasz 2.0\Külsős tesztelői csapat","Endrész Gábor (Multicontact) <RCINET\endreszg>","Design"
+"115779","Shared Steps",,"1","Login (kategóriás ügyintéző)",,,,
+,,,"1.1","A https://tesztauth.pallasz.hu/ oldal megnyitása (környezetfüggő URL)
+","Megnyílik az ""Központi bejelentkezés"" oldal, felhasználónév és jelszó megadható.",,,
+,,,"1.2","Bejelentkezés megfelelő jogosultságú felhasználóval.
+A kategóriás ügyintéző regisztrációját vezető ügyintéző szerepkörű felhasználó 
+végzi. A regisztráció megerősítéséről és a jelszó megváltoztatásáról 
+e-mail üzenetet küld a rendszer. Ezekkel az adatokkal lehet 
+bejelentkezni a rendszerbe kategóriás ügyintézőként.","Megnyílik a https://tesztkatvizs.pallasz.hu/ugyintezo (Kategóriás) oldal.
+Bejelentkezést követően a szerepkörnek (kategóriás ügyintéző) megfelelő menüpontok és szolgáltatások jelennek meg, és érhetők el.",,,
+,,,"2","Bejelentkezést követően a Vizsgaszervezés/Vizsgajegyzőkönyv menüpontot kell választani. 
+","Megnyílik az /Ugyintezo/Vizsgajegyzokonyv#!Nyitott oldal, amelyen található egy Nyitott és Lezárt (alapértelmezett) fül, egy szűrő blokk és a hozzá tartozó találati lista.
+A szűrő blokk az alábbi mezőket tartalmazza:
+ 
+- Jegyzőkönyv azonosító
+- Időpont (időpontválasztóból vagy manuálisan)
+- Vizsgaszervezés (Hatósági gyakorlat kiválasztása esetén nincs Vizsga típusa mező, Képző szervi kiválasztás esetén nincs Vizsga típusa és Vizsgahelyszín mezők, Képző szerv és Kategória mezők Igen)
+- Vizsga típusa
+- Vizsgahelyszín
+A szűrő blokk tartalmaz egy Szűrő feltételek törlése és Szűrés gombot.
+",,,
+,,,"3","(Szűrő megfelelő kitöltése és a) Szűrés gombra kattintás.
+","Az /Ugyintezo/Vizsgajegyzokonyv#!Nyitott oldalon maradva a rendszer kilistázza a szűrőfeltételeknek megfelelő vizsgajegyzőkönyveket Azonosító, Időpont és Vizsgahelyszín a szerint. A vizsgajegyzőkönyvek sorában megjelennek a Részletek gombok.
+",,,
+,,,"4","Módosítani kívánt vizsgajegyzőkönyv sorában lévő Részletek gombra kattintás.
+","A rendszer a Vizsgajegyzőkönyv Részletek oldalára navigál, ahol megjelenik az Alapadatok blokk a korábban megadott adatokkal, melyek nem aktívak, nem kattinthatók, valamint a Vizsgák (alapértelmezett) és Vizsgabiztosok fülek. 
+",,,
+,,,"5","Vizsgák fül megtekintése.
+","Az oldalon maradva megjelennek a tanulók, név, azonosító, képzés, vizsgajegyzőkönyv eredmény, születési hely és idő szerint, mely adatok nem módosíthatók, valamint a jobb alsó sarokban a SZEV eredmények betöltése és a Lezárás gombok, melyek aktívak és kattinthatók.
+",,,
+,,,"6","Módosítani kívánt vizsgára (tanulóra) kattintás. 
+","Az oldalon maradva lenyílva megjelennek a vizsga adatai, Vizsga kódja, Vizsgajegyzőkönyv eredménye és Záró eredmény szerint (nem aktív mező), valamint a jobb alsó sarokban a Mentés gomb. Vizsgajegyzőkönyv eredménye mező esetén a betöltött paraméterekből lehet választani.
+",,,
+,,,"7","Vizsgajegyzőkönyv eredményének módosítása Sikertelenre, majd a Mentés gombra kattintás. 
+","A megnyitott oldalon az ""Az eredmények a jegyzőkönyv lezárásakor kerülnek felülírásra. Kívánja végrehajtani a műveletet?"" üzenet jelenik meg, melyekre a Nem és Igen gombokkal lehet válaszolni. 
+",,,
+,,,"8","Igen gombra kattintás. 
+","Az Igen gomb aktív és kattintható. Kattintást követően az oldal jobb felső sarkában megjelenik a ""A művelet sikeresen végrehajtódott."" üzenet. A rendszer a Vizsgajegyzőkönyv részletek oldalra navigál. A megjelenő űrlap tartalmazza a korábban megadott adatokat megfelelő helyen és minőségben.
+",,,
+"124185","Test Case","Tesztadatok - KAT-KEPZO-080",,,,"Pallasz 2.0\Külsős tesztelői csapat","Endrész Gábor (Multicontact) <RCINET\endreszg>","Design"
+,,,"1","Személyazonosító okmány","Külföldi útlevél",,,
+,,,"2","Születési dátum","2000.01.01",,,
+,,,"3","Választott kategória","D1
+",,,
+,,,"4","Választott tanfolyam","D1",,,
+,,,"5","Elméleti tanfolyam típusa","Tantermi képzés",,,
+,,,"6","Elméleti vizsga típusa","SZEV",,,
+,,,"7","Kizáró, korlátozó tényező","nincs",,,
+,,,"8","Korábbi vezetői engedély","nincs",,,
+,,,"9","Szükséges iskolai végzettséggel rendelkezik","igen",,,
+,,,"10","Papír alapú egészségügyi alkalmassági igazolással rendelkezik?
+","igen",,,
+,,,"11","Vizsgaigazolással rendelkezik","nem",,,
+,,,"12","Vizsgaigazolás kategóriája","nincs",,,
+,,,"13","Tanulói nyilatkozat","1. kérdés: igen, 11. kérdés: igen",,,
+,,,"14","Teljesítette a megfelelő óraszámú elméleti képzést","igen",,,
+,,,"15","Elméleti vizsgaeredmény","sikertelen",,,
+,,,"16","Teljesítette a megfelelő óraszámú gyakorlati képzést
+","nem releváns",,,
+,,,"17","Gyakorlati vizsgaeredmény
+","nem releváns",,,
+"124187","Test Case","Jelenléti ív lezárása- SZK-009",,,,"Pallasz 2.0\Külsős tesztelői csapat","Farkas Anna <RCINET\farkasan>","Design"
+"116591","Shared Steps",,"1","Login (szakoktató) - általános",,,,
+,,,"1.1","A https://tesztekapu.pallasz.hu/ oldal megnyitása (környezetfüggő URL).
+","Megnyílik a KAV oldala, ahol az alábbi ágazatokból és kategóriákból van lehetőség választani:
+Közúti vizsgáztatás:
+- Jelentkezés kategóriás képzésre
+- Szaktanfolyami okmánycsere
+- Közúti járművezetők utánképzése
+Légügy:
+- Légügyi okmánycsere
+Pályaalkalmassági vizsgálat:
+- PÁV ügyintézés
+Szakoktatók és szakoktató jelöltek:
+- Vizsgajelentő leadása
+- Hospitálás és tanítási órák lejelentése
+Képző szervek (Autósiskolák)
+",,,
+,,,"1.2","Szakoktatók bejelentkező oldal megnyitása a Vizsgajelentő leadása (gomb megnyomása)
+","Megnyílik a ""Szakoktatói bejelentkezés"" oldal, felhasználónév és jelszó megadható.
+",,,
+,,,"1.3","Bejelentkezés megfelelő jogosultságú felhasználóval a https://tesztekapuauth.pallasz.hu/szakoktato címre (környezetfüggő URL).
+A szakoktató regisztrációját vezető ügyintéző szerepkörű felhasználó végzi. A regisztráció megerősítéséről és a jelszó megváltoztatásáról e-mail üzenetet küld a rendszer. Ezekkel az adatokkal lehet bejelentkezni a rendszerbe szakoktatónként.
+","Felhasználónév és jelszó megadását követően megjelenik az oldalon a kétlépcsős hitelesítés.
+",,,
+,,,"1.4","Hitelesítő kód megadása és belépés a rendszerbe
+","Megnyílik a https://tesztekapuauth.pallasz.hu/Szakoktato (oldal, megjelennek a Rendszerüzenetek.
+Bejelentkezést követően a szerepkörnek (szakoktató) megfelelő menüpontok és szolgáltatások jelennek meg, és érhetők el.
+",,,
+,,,"2","Jelenléti ív menüpont kiválasztása.
+","Megnyílik a Szakoktato/JelenletiIv oldal, melyen az alábbi gombok jelennek meg:
+
+- Ma
+- jobbra és balra mutató nyilak
+- mai dátum
+- frissítés gomb
+
+Az oldal alapértelmezetten az aznapi dátumot mutatja.
+",,,
+,,,"3","Módosítani kívánt jelenléti ívre kattintás.
+","A jobbra és balra mutató nyilak segítségével a szerkeszteni kívánt eseményre kattintás után Szakoktato/JelenletiIv/Edit/400175 oldalra navigál a rendszer, ahol megjelennek az időpont adatai (nem kattinthatók), valamint a tanuló adatai, melynél csak a jelenlét Megjelent/Hiányzik rádió gombok kattinthatók.
+Az oldalon megjelennek még a piros Tanóra lemondás, zöld Jelenléti ív lezárása és Mindenki megjelent gombok.
+",,,
+,,,"4","Jelenléti ív lezárása gombra kattintás.","Az oldalon megjelenik a Biztosan végrehajtja a műveletet? üzenet, melyre az Igen és Nem gombok segítségével lehet válaszolni. Az Igen gomb megnyomásával az oldal a Jelenléti ív megadása oldalra navigál, ahol megjelenik sárga színnel a  ""A Jelenléti ív 2022.12.19. 14:35-kor Dr. Szaki Szabolcs (szakiszabi) által lezárásra került."" üzenet. A dátum a módosítás dátumától, a szakoktató neve a belépésnél használt szakoktatótól függ.
+A lezárást követően már csak a piros Tanóra megszakítása gomb marad aktív az oldalon.
+",,,
+,,,"5","
+","
+",,,
+"124189","Test Case","Elméleti vizsgajegyzőkönyv megtekintése",,,,"Pallasz 2.0\Külsős tesztelői csapat","Endrész Gábor (Multicontact) <RCINET\endreszg>","Design"
+"116050","Shared Steps",,"1","Login (KAV ügyintéző)",,,,
+,,,"1.1","A https://tesztkatvizs.pallasz.hu/Ugyintezo/ oldal megnyitása.
+","A bejelentkezési oldal megjelenik (Központi bejelentkezés). 
+Az oldalon a bejelentkezési űrlapon megadható a felhasználónév és a jelszó. 
+
+",,,
+,,,"1.2","Felhasználónév és jelszó megadása (KAV ügyintézőt a KAV vezető ügyintéző hozhat létre), majd a Bejelentkezés gomb megnyomása. 
+","A felhasználónév és jelszó megadását követően a Bejelentkezés gomb aktív lesz, kattintható. 
+",,,
+,,,"1.3","Bejelentkezési folyamatot követően megjelenő oldal ellenőrzése.
+","Helyes adatok megadása esetén a rendszer a felhasználót belépteti, amennyiben a felhasználó több kirendeltséggel rendelkezik, akkor A Válasszon kirendeltség olvasható az oldalon, és felsorolásra kerül az összes, érvényes jogviszonnyal érintett kirendeltség.  A kirendeltségek azonosítószáma és neve látható a kijelzett listán. A kirendeltségek kattintással kiválaszthatók.",,,
+,,,"1.4","Megfelelő kirendeltség kiválasztása kattintással. 
+","A rendszer az ügyintézői felületre navigál, ahol a beállított jogosultságoknak megfelelő funkciók érhetők el az oldalon. 
+",,,
+,,,"2","Bejelentkezést követően a Vizsgaszervezés/Elméleti vizsgajegyzőkönyv menüpontot választjuk, az oldalon megjelenő listából kiválasztunk egy vizsgajelentőt és a sor jobb szélén található ""Szerkesztés"" ikonra kattintunk.
+","A rendszer az Elméleti vizsgajegyzőkönyv szerkesztése oldalra navigál (Ugyintezo/ElmeletiVizsgajegyzokonyv/Edit/400038#!EditTabAlapadatok). A megjelenő űrlap tartalmazza a korábban megadott adatokat megfelelő helyen és minőségben. 
+Az oldalon az alábbi fülek (tab) aktív állapotúak, kiválaszthatók:
+- Alapadatok
+- Vizsgázók
+- Vezénylési csoport
+- Vizsgabiztos (amennyiben van vezényelt vizsgabizots és jelentkezett már vizsgázó a jegyzőkönyvre)
+- Vizsgaösszesítő
+- Módosítás
+ 
+Az oldal alján megjelenik:
+- ""Megszüntetés"" gomb
+- ""Mentés"" gomb.
+",,,
+,,,"3","Alapadatok fül adatainak ellenőrzése","Az oldalon az alábbi blokkok jelennek meg:
+- Fejadatok
+- A vizsgajegyzőkönyv típusának megfelelő elnevezésű blokk
+- További adatok
+- Időpontfoglalási adatok
+- Kategóriák kiválasztása
+",,,
+,,,"4","Fejadatok ellenőrzése","A megnyitott oldalon megjelenik a Fejadatok blokk, amelyben megjelennek az adott vizsgajegyzőkönyv létrehozásakor megadott adatok a megfelelő helyen és minőségben:
+- Vizsga napja
+- Vizsga ideje
+- Vizsgahelyszín
+- Vizsgahely
+- Azonosító
+- Kirendeltség
+- Állapot
+
+Az adatok csak olvashatóak, nem szerkeszthetőek.
+",,,
+,,,"5","A vizsgajegyzőkönyv típusának megfelelő elnevezésű blokk - amely lehet Ágazatfüggetlen SZEV, Kategóriás SZEV, Kategóriás szóbeli - ellenőrzése
+","A megnyitott oldalon megjelenik a vizsgajegyzőkönyv típusának megfelelő elnevezés blokk, amelyben megjelennek az adott vizsgajegyzőkönyv létrehozásakor megadott adatok a megfelelő helyen és minőségben:
+- Ágazat
+- Vizsga típusa
+- Behívás típusa
+- Vezénylés típusa
+- Automatikusan véglegesíthető
+- ""Véglegesítés"" gomb.
+
+Az adatok csak olvashatóak, nem szerkeszthetőek.",,,
+,,,"6","A vizsgajegyzőkönyv véglegesítése a ""Véglegesítés' gombra kattintva.","A gombra kattintva a következő figyelmeztető üzenet jelenik meg:
+""A jegyzőkönyvnél automatikus véglegesítés van beállítva 90%-tól. A manuális véglegesítés után ez a jegyzőkönyv később már nem kerülhet automatikusan véglegesítésre. Biztosan szeretné a ""E-A/22/0017/010"" jegyzőkönyvet véglegesíteni?""
+
+A ""Nem"" gombra kattintva tovább folytatható a vizsgajegyzőkönyv szerkesztése
+Az ""Igen"" gombra kattintva véglegesítésre kerül a vizsgajegyzőkönyv és a ""Véglegesítés"" gomb helyett megjelenik a ""Véglegesítés visszavonása"" gomb.
+  ",,,
+,,,"7","A vizsgajegyzőkönyv véglegesítésének visszavonása a ""Véglegesítés visszavonása"" gombra kattintva.","A gombra kattintva a következő figyelmeztető üzenet jelenik meg:
+""Biztosan végrehajtja aműveletet?""
+
+A ""Nem"" gombra kattintva tovább folytatható a vizsgajegyzőkönyv szerkesztése
+Az ""Igen"" gombra kattintva a következő figyelmeztető üzenet jelenik meg:
+""A vizsgajegyzőkönyvhöz tartozik vizsgabiztos, a véglegesítés visszavonásával leszedésre kerüljenek?""
+
+A ""Nem"" gombra kattintva visszavonásra kerül a vizsgajegyzőkönyv véglegesítése a ""Véglegesítés visszavonása"" gomb helyett megjelenik a ""Véglegesítés"" gomb. A vizsgajegyzőkönyv Vizsgabiztosok fülén továbbra is a korábbi vizsgabiztosok jelennek meg.
+Az ""Igen"" gombra kattintva visszavonásra kerül a vizsgajegyzőkönyv véglegesítése a ""Véglegesítés visszavonása"" gomb helyett megjelenik a ""Véglegesítés"" gomb, illetve eltűnik a Vizsgabiztosok fül.
+",,,
+,,,"8","További adatok ellenőrzése","A megnyitott oldalon megjelenik a További adatok blokk, amelyben megjelennek az adott vizsgajegyzőkönyv létrehozásakor megadott adatok a megfelelő helyen és minőségben (a mezők csak akkor szerkeszthetők amennyiben a vizsgajegyzőkönyv típusa Kategóriás szóbeli): 
+- Speciális vizsga*
+- Gépszám*
+- ""Elérhető gépek módosítása"" gomb
+- Nyelv* (csak tolmács választása esetén szerkeszthető)
+- Segédlet szükséges (csak tolmács választása esetén szerkeszthető)
+
+Az adatok csak olvashatóak, nem szerkeszthetőek, az ""Elérhető gombok módosítása"" gombra kattintva módosíthatóak az elérhető gépek.
+",,,
+,,,"9","Időpontfoglalási adatok ellenőrzése
+","A megnyitott oldalon megjelenik az Időpontfoglalási adatok blokk, amelyben megjelennek az adott vizsgajegyzőkönyv létrehozásakor megadott adatok a megfelelő helyen és minőségben:
+Ágazatfüggetlen SZEV, vagy Kategóriás SZEV vizsgajegyzőkönyv típus esetén az alábbi adatok adhatók meg:
+- Jelentkezési időszak kezedete* (dátum- és óraválasztóval, vagy manuális bevitellel)
+- Jelentkezési időszak vége* (dátum- és óraválasztóval, vagy manuális bevitellel)
+- Első jelentkezhető időpont* (óraválasztóval, vagy manuális bevitellel)
+- Publikálva
+
+A Publikálva mező értéke amennyiben a vizsgajegyzőkönyv még nem került publikálásra a következő:
+- Még nem került publikálásra 
+Illetve ebben az esetben megjelenik a ""Publikálás"" gomb is.
+Publikált vizsgajegyzőkönyv esetén megjelenik publikálás dátuma év.hónap.nap óra:perc pontossággal. Illetve ebben az esetben megjelenik a ""Jelentkezés szüneteltetése"" gomb a ""Publikálás"" gomb helyén.
+ 
+A kötelező mezők kiöltését a rendszer kikényszeríti. A mezők kitölthetők. hiány, vagy formai eltérés esetén egyértelmű hibát jelez az oldal.
+",,,
+,,,"10","Vizsgajegyzőkönyv publikálása a ""Publikálás"" gombra kattintva.","A gombra kattintva a következő figyelmeztető üzenet jelenik meg:
+""A publikálással a képző szervek részére elérhetővé válik a vizsgajegyzőkönyv. Biztosan publikálásra kerüljön a jegyzőkönyv?""
+
+A ""Nem"" gombra kattintva tovább folytatható a vizsgajegyzőkönyv szerkesztése
+Az ""Igen"" gombra kattintva megtörténik a vizsgajegyzőkönyv publikálása. Innentől képzőszervi oldalon jelentkezhetővé válik a vizsgajegyzőkönyv. Továbbá megjelenik a ""Jelentkezés szüneteltetése"" gomb. 
+",,,
+,,,"11","Jelentkeztetés szüneteltetése a ""Jelentkezés szüneteltetése"" gombra kattinva.","A gombra kattintva a következő figyelmeztető üzenet jelenik meg:
+""Biztosan végrehajtja a műveletet?""
+
+A ""Nem"" gombra kattintva tovább folytatható a vizsgajegyzőkönyv szerkesztése
+Az ""Igen"" gombra kattintva szüneteltetésre kerül a vizsgajegyzőkönyvre történő jelentkezés lehetősége. Innentől képzőszervi oldalon nem lehetséges a vizsgajegyzőkönyvre jelentkezni. Továbbá megjelenik a ""Jelentkezés engedélyezése"" gomb. 
+",,,
+,,,"12","Jelentkezés újra engedélyezése a ""Jelentkezés engedélyezése"" gombra kattintva.","A gombra kattintva a következő figyelmeztető üzenet jelenik meg:
+""Biztosan végrehajtja a műveletet?""
+
+A ""Nem"" gombra kattintva tovább folytatható a vizsgajegyzőkönyv szerkesztése
+Az ""Igen"" gombra kattintva megtörténik a vizsgajegyzőkönyv jelentkezhetőségének újra engedélyezése. Innentől képzőszervi oldalon újra jelentkezhetővé válik a vizsgajegyzőkönyv. Továbbá megjelenik a ""Jelentkezés szüneteltetése"" gomb. 
+",,,
+,,,"13","Kategóriák ellenőrzése
+","A megnyitott oldalon megjelenik a Kategóriák blokk amelyben megjelennek az adott vizsgajegyzőkönyv létrehozásakor megadott adatok a megfelelő helyen és minőségben:
+- Ágazat
+- Kód
+- Megnevezés",,,
+,,,"14","További kategóriák hozzáadása a ""Kategória hozzáadása"" gomb megnyomásával. 
+","Megjelenik a Kategóriák hozzárendelése ablak, amelyben megjelenik egy szűrő blokk és a szűrésnek megfelelő találati lista.
+
+Az Ágazat lenyíló lista az alábbi értékeket tartalmazza:
+- Összes
+-Kategóriás
+-Légügyi
+-PÁV
+-Szaktanfolyami
+-Utánképzés
+-Vasúti
+
+A Szűrés gomb megnyomásával az adott kategóriába tartozó képzések listája megjelenik.
+",,,
+,,,"15","A találati listában az adott képzés melletti + ikon megnyomásával a képzés hozzáadása
+","A + gomb megnyomásával a képezhető képzés eltűnik a listából. Az ablak bezárását követően látható a Kategóriák kiválasztása blokkbana található listában.
+",,,
+,,,"16","Kategória eltávolítása a kiválasztott kategória sorának jobb szélén található ""Törlés"" ikonra kattintva.
+","A gombra kattintva a kiválasztott kategória eltűnik a listából és a Kategória hozzáadása ablakban újra hozzáadhatóvá válik.
+",,,
+,,,"17","Kategóriák visszaállítása. a ""Vizsgahely által biztosított kategórik visszaállítása"" gombra kattintva.
+","A gombra kattintva figyelmeztető ablak jelenik meg az alábbi üzenettel:
+""Biztosan szeretné az összes kategóriát visszaállítani?""
+
+A ""Mégsem"" gombra kattintva tovább folytatható a vizsgajegyzőkönyv szerkesztése. Az ""Igen"" gombra kattintva a lista tartalma visszaáll a módosításokat megelőző kategória listára.
+",,,
+,,,"18","A hiánytalanul kitöltött adatlap mentése (minimum a kötelező mezők ki vannak töltve). Az oldal alján a Mentés gomb megnyomása.
+","A mentés gomb aktív és kattintható. Kattintást követően az oldal jobb felső sarkában megjelenik a ""A művelet sikeresen végrehajtódott."" üzenet. A rendszer az Elméleti vizsgajegyzőkönyv szerkesztése (Ugyintezo/ElmeletiVizsgajegyzokonyv/Edit/400229#!EditTabAlapadatok) oldalra navigál. A megjelenő űrlap tartalmazza a korábban megadott adatokat megfelelő helyen és minőségben. 
+Az űrlapon az alábbi fülek (tab) aktív állapotúak, kiválaszthatók:
+- Alapadatok
+- Vizsgázók
+- Vizsgabiztos (amennyiben van vezényelt vizsgabizots és jelentkezett már vizsgázó a jegyzőkönyvre)
+- Vezénylési csoport- Vizsgaösszesítő
+- Módosítás
+
+Az oldal alján megjelenik :
+- a Megszüntetés gomb
+- a Mentés gomb.
+",,,

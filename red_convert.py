@@ -40,8 +40,6 @@ def main(inputfile, outputfile):
 
 		for i in range (1,10):
 			for x in range (1,10):
-				# print(str(i) +'.' + str(x));
-				# print(str(i) + '_' + str(x))
 				content = content.replace(str(str(i) +'.' + str(x)), str(str(i) + '_' + str(x)))
 
 		target = open(outputfile, "w", encoding=targetEncoding)

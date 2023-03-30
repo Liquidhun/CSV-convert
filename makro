@@ -1,0 +1,95 @@
+Function GetFilenameFromPath(ByVal strPath As String) As String
+' Returns the rightmost characters of a string upto but not including the rightmost '\'
+' e.g. 'c:\winnt\win.ini' returns 'win.ini'
+
+    If Right$(strPath, 1) <> "\" And Len(strPath) > 0 Then
+        GetFilenameFromPath = GetFilenameFromPath(Left$(strPath, Len(strPath) - 1)) + Right$(strPath, 1)
+    End If
+End Function
+
+Sub saveFile()    
+    path = ThisWorkbook.path & "\..\clean\"
+    filenameFull = ThisWorkbook.FullName
+    filename = GetFilenameFromPath(filenameFull)
+    onlyExtention = Right(filename, 4)
+    onlyFilenameArr = Split(filename, onlyExtention)
+    onlyName = onlyFilenameArr(0)
+    newName = onlyName
+    MsgBox (newName)
+End Sub
+
+Sub clean()
+'
+' clean Cleaning
+'
+'
+Dim lastRow As Long, currentValue As Variant
+    
+    lastRow = Cells(Rows.Count, 4).End(xlUp).Row
+    For i = 2 To lastRow
+        If ThisWorkbook.Sheets(1).Cells(i, 3).Value = "" Then
+            ThisWorkbook.Sheets(1).Cells(i, 3).Value = currentValue
+        Else
+            currentValue = ThisWorkbook.Sheets(1).Cells(i, 3).Value
+        End If
+    Next i
+
+    Cells.Select
+    With Selection
+        .HorizontalAlignment = xlGeneral
+        .VerticalAlignment = xlTop
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    With Selection
+        .HorizontalAlignment = xlLeft
+        .VerticalAlignment = xlTop
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    Range("F4").Select
+    Columns("F:F").ColumnWidth = 100.86
+    Columns("E:E").ColumnWidth = 69.14
+    Cells.Select
+    Cells.EntireRow.AutoFit
+
+    Dim endRow As Long
+
+    endRow = Cells(Rows.Count, 4).End(xlUp).Row
+
+    Range(Cells(1, 1), Cells(endRow, 9)).Select
+
+    Range("E4").Activate
+    Application.CutCopyMode = False
+    ActiveSheet.ListObjects.Add(xlSrcRange, Range(Cells(1, 1), Cells(endRow, 9)), , xlYes).Name = _
+        "Táblázat1"
+    Cells.Select
+    With Selection
+        .HorizontalAlignment = xlLeft
+        .VerticalAlignment = xlTop
+        .WrapText = True
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    Range("E2").Select
+    Columns("C:C").ColumnWidth = 30.71
+    Cells.Select
+    Cells.EntireRow.AutoFit
+    Range("C4").Select
+    ActiveWindow.SmallScroll Down:=54
+    
+    Columns(2).EntireColumn.Delete
+    Columns(1).EntireColumn.Delete
+End Sub
